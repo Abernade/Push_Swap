@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 11:35:15 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 14:24:14 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	flag_init(swap *flags)
+static void	flag_init(t_swap *flags)
 {
 	if (!flags)
 		return ;
@@ -24,9 +24,9 @@ static void	flag_init(swap *flags)
 	flags->disorder = -1;
 }
 
-static void	algo_adaptator(swap *flags)
+/*static void	algo_adaptator(swap *flags)
 {
-	/*verifier qu'il n'y a pas pls flag => idee de faire une fct qui check les erreur */
+	//verifier qu'il n'y a pas pls flag => idee de faire une fct qui check les erreur
 	if (flags->flag_adaptative)
 		adaptative();
 	else if (flags->flag_simple)
@@ -35,7 +35,7 @@ static void	algo_adaptator(swap *flags)
 		medium();
 	else if (flags->flag_complex)
 		complex();
-}
+}*/
 
 static void	del_list(void *content)
 {
@@ -45,7 +45,7 @@ static void	del_list(void *content)
 
 int	main(int argc, char **av)
 {
-	swap	flags;
+	t_swap	flags;
 	t_list	*new;
 	t_list	*head_new;
 
@@ -59,8 +59,9 @@ int	main(int argc, char **av)
 		printf("[%d]\n", ((int *)head_new->content)[0]);
 		head_new = head_new->next;
 	}
-	error_check(&head_new);
-	algo_adaptator(&flags);
+	//error_check(&head_new);
+	//algo_adaptator(&flags);
+	printf("[%f]\n", disorder(head_new, ft_lstsize(head_new)));
 	ft_lstclear(&new, del_list);
 	return (0);
 }

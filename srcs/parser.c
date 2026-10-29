@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 11:35:19 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 14:24:39 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	set_flags(char *str, swap *flags, size_t len)
+static void	set_flags(char *str, t_swap *flags, size_t len)
 {
 	if (ft_memcmp(str, "--bench", len + 1))
 		flags->flag_bench = 1;
@@ -66,7 +66,7 @@ static t_list	*get_ints(char **av, int argc)
 	return (head);
 }
 
-t_list	*parser(char **av, int argc, swap *flags)
+t_list	*parser(char **av, int argc, t_swap *flags)
 {
 	int		i;
 	t_list	*head;

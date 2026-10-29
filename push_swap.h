@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 10:30:02 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 14:22:22 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ typedef struct	s_swap
 	int		flag_adaptative;
 	int		flag_bench;
 	float	disorder;
-} swap;
+} t_swap;
 
 
-t_list	*parser(char **av, int argc, swap *flags);
+t_list	*parser(char **av, int argc, t_swap *flags);
+float	disorder(t_list *list_a, unsigned int size);
 
 #endif
