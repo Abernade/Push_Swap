@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 09:52:35 by arbernad          #+#    #+#             */
-/*   Updated: 2026/10/29 10:09:49 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/29 14:20:17 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ static t_bool	is_duplicate(t_list *lst)
 	lst = lst->next;
 	while (lst)
 	{
-
+		if (*content == *(int *)lst->content)
+			return (TRUE);
 		lst = lst->next;
 	}
+	return (FALSE);
 }
 
 t_bool	has_duplicate(t_list *lst)
