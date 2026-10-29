@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 10:10:36 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 11:35:19 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,6 @@ static int	str_is_digit(char *str)
 	return (1);
 }
 
-static void	del_list(void *content)
-{
-	if (content)
-		free(content);
-}
-
 static t_list	*get_ints(char **av, int argc)
 {
 	int		i;
@@ -72,7 +66,7 @@ static t_list	*get_ints(char **av, int argc)
 	return (head);
 }
 
-int	parser(char **av, int argc, swap *flags)
+t_list	*parser(char **av, int argc, swap *flags)
 {
 	int		i;
 	t_list	*head;
@@ -82,12 +76,5 @@ int	parser(char **av, int argc, swap *flags)
 	av++;
 	set_flags(*av, flags, ft_strlen(*av));
 	head = get_ints(av, argc);
-	new = head;
-	while (head)
-	{
-		printf("[%d]\n", ((int *)head->content)[0]);
-		head = head->next;
-	}
-	ft_lstclear(&new, del_list);
-	return(0);
+	return (head);
 }
