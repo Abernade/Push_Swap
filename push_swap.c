@@ -28,7 +28,7 @@ int	parser(char **av, int argc, swap *flags)
 	set_flags(av[i], flags, ft_strlen(av[i]));
 	while (i < argc)
 	{
-
+;glk;fg;
 	}
 	return(0);
 }
