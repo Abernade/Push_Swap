@@ -58,7 +58,6 @@ t_list	*get_ints(char **av, int argc)
 		i++;
 	}
 	return (head);
-}
 
 int	parser(char **av, int argc, swap *flags)
 {
