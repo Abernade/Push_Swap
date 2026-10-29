@@ -4,8 +4,9 @@ choisir les algorithmes
 ce que va recevoir notre programme ce sont des listes d'entier :
 
 - parsing a faire sur la validité de la liste d'arguments composée de : `./exec` suivie de `--flag` si besoin et enfin `stack a`;
-  - dont récup les flags et donc lancer le bon algo selon diff
-- si bon : mettre tt dans une liste (soublement chainée)
+  - [x] récup les flags
+    - [ ] lancer le bon algo selon la difficulté
+    - [ ] récupérer les entiers passés en arguments : ils sont transformées en liste chainée (à réfléchir)
   - sinon > error
 - si flag --adaptativ, --bench ou pas de flag > traduire le pseudo-code en C pour calculer le disorder;
 
