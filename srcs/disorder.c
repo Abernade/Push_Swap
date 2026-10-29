@@ -6,17 +6,14 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 11:39:11 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:24:36 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 15:34:16 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-/* faire fonction qui avance de 1 */
 
-static int		contentcmp(t_list *list_a, int i, int j, int size)
+static int		contentcmp(t_list *list_a, int i, int j)
 {
-	t_list	*list_b;
-	t_list	*head;
 	int		la;
 	int		lb;
 
@@ -34,15 +31,18 @@ static int		contentcmp(t_list *list_a, int i, int j, int size)
 		list_a = list_a->next;
 		j--;
 	}
-	lb = ((int *)list_b->content)[0];
+	lb = ((int *)list_a->content)[0];
+	if (la > lb)
+		return (1);
+	return (0);
 }
 
-float	disorder(t_list *list_a, unsigned int size)
+double	disorder(t_list *list_a, unsigned int size)
 {
-	float	mistakes;
-	float	total_pairs;
-	int		i;
-	int		j;
+	double				mistakes;
+	double				total_pairs;
+	unsigned int		i; // faut faire une cdt ici pour verifier que ca n'overflow pas
+	unsigned int		j;
 
 	mistakes = 0;
 	total_pairs = 0;
@@ -53,7 +53,7 @@ float	disorder(t_list *list_a, unsigned int size)
 		while (j < size - 1)
 		{
 			total_pairs += 1;
-			if (contentcmp(list_a, i, j, size))
+			if (contentcmp(list_a, i, j) == TRUE)
 				mistakes += 1;
 			j++;
 		}

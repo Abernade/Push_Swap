@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:29:56 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/29 15:00:17 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ typedef struct	s_swap
 	t_bool	flag_complex;
 	t_bool	flag_adaptative;
 	t_bool	flag_bench;
-	t_bool	disorder;
+	float	disorder;
 }	t_swap;
 
 
 t_list	*parser(char **av, int argc, t_swap *flags);
-float	disorder(t_list *list_a, unsigned int size);
+double	disorder(t_list *list_a, unsigned int size);
 
 #endif

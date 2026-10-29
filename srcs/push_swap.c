@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:24:14 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 15:01:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	flag_init(t_swap *flags)
 		complex();
 }*/
 
+
 static void	del_list(void *content)
 {
 	if (content)
@@ -48,6 +49,7 @@ int	main(int argc, char **av)
 	t_swap	flags;
 	t_list	*new;
 	t_list	*head_new;
+	unsigned int	size;
 
 	flag_init(&flags); //faire fonction à part pour
 	if (argc < 2)// dans le cas ou on appelle que l'executable
@@ -61,7 +63,9 @@ int	main(int argc, char **av)
 	}
 	//error_check(&head_new);
 	//algo_adaptator(&flags);
-	printf("[%f]\n", disorder(head_new, ft_lstsize(head_new)));
+	size = ft_lstsize(new);
+	flags.disorder = disorder(new, size);
+	printf("[%f]\n", flags.disorder);
 	ft_lstclear(&new, del_list);
 	return (0);
 }
