@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 10:10:21 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 11:27:55 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,41 @@ static void	flag_init(swap *flags)
 	flags->disorder = -1;
 }
 
+static void	algo_adaptator(swap *flags)
+{
+	if (flags->flag_adaptative)
+		adaptative();
+	else if (flags->flag_simple)
+		simple();
+	else if(flags->flag_medium)
+		medium();
+	else if (flags->flag_complex)
+		complex();
+}
+
+static void	del_list(void *content)
+{
+	if (content)
+		free(content);
+}
+
 int	main(int argc, char **av)
 {
 	swap	flags;
+	t_list	*new;
+	t_list	*head_new;
+
 	flag_init(&flags); //faire fonction à part pour
 	if (argc < 2)// dans le cas ou on appelle que l'executable
 		return (1);
-	parser(av, argc, &flags);
-	algo_adaptor(&flags);
+	new = parser(av, argc, &flags);
+	head_new = new;
+	while (head_new)
+	{
+		printf("[%d]\n", ((int *)head_new->content)[0]);
+		head_new = head_new->next;
+	}
+	algo_adaptator(&flags);
+	ft_lstclear(&new, del_list);
+	return (0);
 }

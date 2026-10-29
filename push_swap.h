@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 10:09:42 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 10:30:02 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct	s_swap
 } swap;
 
 
-int	parser(char **av, int argc, swap *flags);
+t_list	*parser(char **av, int argc, swap *flags);
 
 #endif
