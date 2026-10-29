@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:29:56 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/29 15:32:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,24 @@ typedef enum
 	TRUE
 }	t_bool;
 
-typedef struct	s_swap
+typedef struct	s_config
 {
 	t_bool	flag_simple;
 	t_bool	flag_medium;
 	t_bool	flag_complex;
 	t_bool	flag_adaptative;
 	t_bool	flag_bench;
-	t_bool	disorder;
-}	t_swap;
+	float	disorder;
+}	t_config;
 
+// parser.c
+t_list	*parser(char **av, int argc, t_config *flags);
 
-t_list	*parser(char **av, int argc, t_swap *flags);
+// disorder.c
 float	disorder(t_list *list_a, unsigned int size);
+
+// error.c
+t_bool	has_flag_error(t_config *config);
+t_bool	has_duplicate(t_list *lst);
 
 #endif
