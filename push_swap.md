@@ -5,8 +5,9 @@ ce que va recevoir notre programme ce sont des listes d'entier :
 
 - parsing a faire sur la validité de la liste d'arguments composée de : `./exec` suivie de `--flag` si besoin et enfin `stack a`;
   - [x] récup les flags
+    - [ ] penser à faire une fonction qui verifie qu'il n'y a pas plusieurs flags de complexité : on retourne une erreur ?
     - [ ] lancer le bon algo selon la difficulté
-    - [ ] récupérer les entiers passés en arguments : ils sont transformées en liste chainée (à réfléchir)
+    - [x] récupérer les entiers passés en arguments : ils sont transformées en liste chainée (à réfléchir)
   - sinon > error
 - si flag --adaptativ, --bench ou pas de flag > traduire le pseudo-code en C pour calculer le disorder;
 
