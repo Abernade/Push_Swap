@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 11:27:55 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 11:35:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	flag_init(swap *flags)
 
 static void	algo_adaptator(swap *flags)
 {
+	/*verifier qu'il n'y a pas pls flag => idee de faire une fct qui check les erreur */
 	if (flags->flag_adaptative)
 		adaptative();
 	else if (flags->flag_simple)
@@ -58,6 +59,7 @@ int	main(int argc, char **av)
 		printf("[%d]\n", ((int *)head_new->content)[0]);
 		head_new = head_new->next;
 	}
+	error_check(&head_new);
 	algo_adaptator(&flags);
 	ft_lstclear(&new, del_list);
 	return (0);
