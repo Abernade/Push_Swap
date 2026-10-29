@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 10:01:16 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/29 11:31:41 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h> //à enlever !!!
 # include "libft/libft.h"
 
 typedef enum
@@ -25,11 +26,15 @@ typedef enum
 
 typedef struct	s_swap
 {
-	int	flag_simple;
-	int	flag_medium;
-	int	flag_complex;
-	int	flag_adaptative;
-	int	flag_bench;
+	int		flag_simple;
+	int		flag_medium;
+	int		flag_complex;
+	int		flag_adaptative;
+	int		flag_bench;
+	float	disorder;
 } swap;
+
+
+t_list	*parser(char **av, int argc, swap *flags);
 
 #endif
