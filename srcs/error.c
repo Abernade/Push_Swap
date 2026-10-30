@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 14:45:51 by arbernad          #+#    #+#             */
-/*   Updated: 2026/10/30 11:21:55 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 13:26:53 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ t_bool	has_duplicate(t_list *lst)
 
 void	msg_error(void)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
 }
