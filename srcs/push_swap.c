@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 15:01:15 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 10:18:38 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	flag_init(t_swap *flags)
+static void	flag_init(t_config *flags)
 {
 	if (!flags)
 		return ;
@@ -46,9 +46,9 @@ static void	del_list(void *content)
 
 int	main(int argc, char **av)
 {
-	t_swap	flags;
-	t_list	*new;
-	t_list	*head_new;
+	t_config		flags;
+	t_list			*new;
+	t_list			*head_new;
 	unsigned int	size;
 
 	flag_init(&flags); //faire fonction à part pour
