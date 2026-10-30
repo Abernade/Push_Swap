@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 10:29:51 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 11:24:23 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ double	disorder(t_list *list_a, unsigned int size);
 // error.c
 t_bool	has_flag_error(t_config *config);
 t_bool	has_duplicate(t_list *lst);
+void	msg_error(void);
 
 #endif

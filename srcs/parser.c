@@ -6,24 +6,30 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 10:32:04 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 11:24:31 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-static void	set_flags(char *str, t_config *flags, size_t len)
+static t_bool	set_flags(char **str, t_config *flags, size_t len)
 {
-	if (ft_memcmp(str, "--bench", len + 1))
+	if (ft_memcmp(str[1], "--bench", len + 1))
 		flags->flag_bench = 1;
-	else if (ft_memcmp(str, "--simple", len + 1))
-		flags->flag_simple = 1;
-	else if (ft_memcmp(str, "--medium", len + 1))
-		flags->flag_medium = 1;
-	else if (ft_memcmp(str, "--complex", len + 1))
-		flags->flag_complex = 1;
-	else if (ft_memcmp(str, "--adaptative", len + 1))
-		flags->flag_adaptative = 1;
+	while (str[2])
+	{
+		if (ft_memcmp(str, "--simple", len + 1))
+			flags->flag_simple = 1;
+		else if (ft_memcmp(str, "--medium", len + 1))
+			flags->flag_medium = 1;
+		else if (ft_memcmp(str, "--complex", len + 1))
+			flags->flag_complex = 1;
+		else if (ft_memcmp(str, "--adaptative", len + 1))
+			flags->flag_adaptative = 1;
+	}
+	if (!has_flag_error(flags))
+		return (FALSE);
+	return (TRUE);
 }
 
 static int	str_is_digit(char *str)
@@ -80,7 +86,12 @@ t_list	*parser(char **av, int argc, t_config *flags)
 
 	i = 1; //on veux pas l'exec
 	av++;
-	set_flags(*av, flags, ft_strlen(*av));
-	head = get_ints(av, argc);
+	if (set_flags(av, flags, ft_strlen(*av)))
+		head = get_ints(av, argc);
+	else
+	{
+		msg_error();
+		return (NULL);
+	}
 	return (head);
 }

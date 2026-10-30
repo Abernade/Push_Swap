@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 14:45:51 by arbernad          #+#    #+#             */
-/*   Updated: 2026/10/29 16:45:26 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/30 11:21:55 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ t_bool	has_duplicate(t_list *lst)
 		lst = lst->next;
 	}
 	return (FALSE);
+}
+
+void	msg_error(void)
+{
+	ft_putstr_fd("Error\n", 1);
 }

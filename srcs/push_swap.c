@@ -6,11 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 10:31:54 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 11:23:35 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	flag_init(t_config *flags)
 {
@@ -53,6 +53,8 @@ int	main(int argc, char **av)
 	if (argc < 2)// dans le cas ou on appelle que l'executable
 		return (1);
 	new = parser(av, argc, &flags);
+	if (!new)
+		return (1);
 	head_new = new;
 	while (head_new)
 	{
