@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 11:23:35 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/30 11:53:24 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	main(int argc, char **av)
 	t_list			*head_new;
 	unsigned int	size;
 
-	flag_init(&flags); //faire fonction à part pour
-	if (argc < 2)// dans le cas ou on appelle que l'executable
+	flag_init(&flags);
+	if (argc < 2)
 		return (1);
 	new = parser(av, argc, &flags);
 	if (!new)

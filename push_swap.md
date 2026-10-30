@@ -4,8 +4,8 @@
 
 - parsing a faire sur la validité de la liste d'arguments composée de : `./exec` suivie de `--flag` si besoin et enfin `stack a`;
   - [x] récup les flags
-    - [x] stucture pour les flags faite
-    - [x] penser à faire une fonction qui verifie qu'il n'y a pas plusieurs flags de complexité : on retourne une erreur ?
+    - [x] stucture flags + fonction qui verifie =/= plusieurs flags + retour d'une erreur
+    - [ ] vérifier le format des intergers envoyés par le $USER
     - [x] récupérer les entiers passés en arguments : ils sont transformées en liste chainée (à réfléchir)
   - sinon > error
   - [ ] lancer le bon algo selon la difficulté
