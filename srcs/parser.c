@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:24:39 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/10/29 16:35:56 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-static void	set_flags(char *str, t_swap *flags, size_t len)
+static void	set_flags(char *str, t_config *flags, size_t len)
 {
 	if (ft_memcmp(str, "--bench", len + 1))
 		flags->flag_bench = 1;
@@ -33,11 +33,18 @@ static int	str_is_digit(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+
+static void	del_list(void *content)
+{
+	if (content)
+		free(content);
 }
 
 static t_list	*get_ints(char **av, int argc)
@@ -66,11 +73,10 @@ static t_list	*get_ints(char **av, int argc)
 	return (head);
 }
 
-t_list	*parser(char **av, int argc, t_swap *flags)
+t_list	*parser(char **av, int argc, t_config *flags)
 {
 	int		i;
 	t_list	*head;
-	t_list	*new;
 
 	i = 1; //on veux pas l'exec
 	av++;

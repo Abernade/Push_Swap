@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 15:32:32 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/10/29 16:36:46 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ typedef struct	s_config
 	float	disorder;
 }	t_config;
 
+
 // parser.c
 t_list	*parser(char **av, int argc, t_config *flags);
-
-// disorder.c
-float	disorder(t_list *list_a, unsigned int size);
+double	disorder(t_list *list_a, unsigned int size);
 
 // error.c
 t_bool	has_flag_error(t_config *config);
