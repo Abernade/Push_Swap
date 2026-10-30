@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/29 09:52:35 by arbernad          #+#    #+#             */
-/*   Updated: 2026/10/29 14:20:17 by arbernad         ###   ########.fr       */
+/*   Created: 2026/10/29 14:45:51 by arbernad          #+#    #+#             */
+/*   Updated: 2026/10/29 15:32:31 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ static t_bool	is_duplicate(t_list *lst)
 			return (TRUE);
 		lst = lst->next;
 	}
+	return (FALSE);
+}
+
+t_bool	has_flag_error(t_config *config)
+{
+	int flag_count;
+
+	flag_count = config->flag_adaptative;
+	flag_count += config->flag_simple;
+	flag_count += config->flag_medium;
+	flag_count += config->flag_complex;
+	if (flag_count > 1)
+		return (TRUE);
 	return (FALSE);
 }
 
