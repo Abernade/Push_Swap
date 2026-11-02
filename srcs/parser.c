@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 11:50:36 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/02 08:33:11 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_bool	set_flags(char **str, t_config *flags, size_t len)
 			flags->flag_adaptative = 1;
 		i++;
 	}
-	if (!has_flag_error(flags))
+	if (has_flag_error(flags))
 		return (FALSE);
 	return (TRUE);
 }

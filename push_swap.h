@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 11:24:23 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/02 08:19:22 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef struct s_config
 	t_bool	flag_bench;
 	float	disorder;
 }	t_config;
+
+// test_utils.c
+void	print_stack(t_list *stack);
+void	print_config(t_config *config);
 
 // parser.c
 t_list	*parser(char **av, int argc, t_config *flags);

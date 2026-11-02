@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/10/30 10:20:54 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/02 08:22:30 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ SRC_DIR := srcs
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
-SRC := push_swap.c parser.c lst_utils.c disorder.c
+SRC := push_swap.c \
+		parser.c \
+		test_utils.c \
+		disorder.c \
+		error.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -34,7 +38,7 @@ $(OBJ_DIR)/%.o: %.c
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) $(LIBFT) -o $(NAME)
 
 clean:
 	make clean -C $(LIBFT_PATH)

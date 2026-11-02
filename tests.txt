@@ -13,6 +13,7 @@
 ./push_swap --simplee
 ./push_swap --simple --medium
 ./push_swap --simple --adaptative
+./push_swap --bench --medium 2 6 7 21 44 -56
 ./push_swap --bench --medium
 ./push_swap --bench --bench
 ./push_swap "1 2 4 3 56 7"
@@ -20,4 +21,4 @@
 ./push_swap "--2"
 ./push_swap 1r 3 2 4
 ./push_swap 1 r 3 2 4
-./push_swap
+

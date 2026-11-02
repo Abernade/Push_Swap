@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 11:53:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/02 08:25:53 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(int argc, char **av)
 {
 	t_config		flags;
 	t_list			*new;
-	t_list			*head_new;
 	unsigned int	size;
 
 	flag_init(&flags);
@@ -55,17 +54,20 @@ int	main(int argc, char **av)
 	new = parser(av, argc, &flags);
 	if (!new)
 		return (1);
-	head_new = new;
-	while (head_new)
+	if (has_flag_error(&flags))
 	{
-		printf("[%d]\n", ((int *)head_new->content)[0]);
-		head_new = head_new->next;
+		printf("flag error\n");
+		msg_error();
 	}
-	//error_check(&head_new);
-	//algo_adaptator(&flags);
+	if (has_duplicate(new))
+	{
+		printf("duplicate error\n");
+		msg_error();
+	}
 	size = ft_lstsize(new);
 	flags.disorder = disorder(new, size);
-	printf("[%f]\n", flags.disorder);
+	print_config(&flags);
+	print_stack(new);
 	ft_lstclear(&new, del_list);
 	return (0);
 }
