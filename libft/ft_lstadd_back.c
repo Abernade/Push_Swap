@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 13:49:34 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/29 14:35:49 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/02 15:16:45 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	curr = ft_lstlast(*lst);
 	curr->next = new;
 	new->prev = curr;
+	new->next = NULL;
 }

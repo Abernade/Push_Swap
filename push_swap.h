@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 11:51:00 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 15:21:14 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,17 @@ double	disorder(t_list *list_a, unsigned int size);
 t_bool	has_flag_error(t_config *config);
 t_bool	has_duplicate(t_list *lst);
 void	msg_error(void);
+
+// instr_push_swap.c
+void	swap_a(t_pushswap *data);
+void	swap_b(t_pushswap *data);
+void	push_a(t_pushswap *data);
+void	push_b(t_pushswap *data);
+
+// instr_rotate.c
+void	rotate_a(t_pushswap *data);
+void	rotate_b(t_pushswap *data);
+void	reverse_rotate_a(t_pushswap *data);
+void	reverse_rotate_b(t_pushswap *data);
 
 #endif

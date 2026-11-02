@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 11:52:03 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 12:50:54 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,6 @@ int	main(int argc, char **av)
 	if (!new)
 		return (1);
 	if (has_flag_error(data->config))
-	{
-		msg_error();
-		return (1);
-	}
-	new = parser(av, data->config);
-	if (!new)
 	{
 		msg_error();
 		return (1);
