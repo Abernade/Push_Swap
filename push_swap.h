@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 15:21:14 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 16:30:16 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_pushswap
 // test_utils.c
 void	print_stack(t_list *stack);
 void	print_config(t_config *config);
+void	printf_stacks(t_pushswap *data);
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);
@@ -67,5 +68,8 @@ void	rotate_a(t_pushswap *data);
 void	rotate_b(t_pushswap *data);
 void	reverse_rotate_a(t_pushswap *data);
 void	reverse_rotate_b(t_pushswap *data);
+
+// algo_simple.c
+t_list	*simple_a(t_pushswap *data, int size);
 
 #endif
