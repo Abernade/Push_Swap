@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/02 08:50:17 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 16:20:27 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ void	print_stack(t_list *stack)
 		printf("%d\n", *(int *)stack->content);
 		stack = stack->next;
 	}
+}
+
+void	printf_stacks(t_pushswap *data)
+{
+	t_list	*head;
+
+	head = data->stack_a;
+	while (data->stack_a)
+	{
+		printf("[%d]", *(int *)head->content);
+		head = head->next;
+	}
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 12:01:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 16:30:07 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ static t_bool	set_flags(char *str, t_config *flags)
 	return (TRUE);
 }
 
-/*	normalement c'est corrigé : d'abord ca verif les espaces,
-*	ensuite si y a un moins et enfin que la chaine n'est pas juste un moins;
-*	j'hésite quand à savoir si on laisse l'espace parce qu'em théorie c'est
-* 	pas nécessaire comme *	le partie pris est e ne pas accepter une entrée :
-* 	>? ./push_swap <flags> "   454" "4" "-69 45 63"	*/
 static int	str_is_digit(char *str)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:51:57 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/02 16:14:44 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 16:37:31 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*get_instr_str(int instr)
 {
-	char	*str;
+	char	*str = NULL;
 
 	if (instr == SA)
 		str = ft_strdup("sa");
