@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/30 10:18:42 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/02 08:49:12 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char			*ft_strnstr(const char *big, const char *little, size_t len);
 int				ft_atoi(const char *nptr);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_strdup(const char *s);
+int				ft_strcmp(const char *s1, const char *s2);
 
 /* additionnal functions */
 char			*ft_substr(char const *s, unsigned int start, size_t len);
