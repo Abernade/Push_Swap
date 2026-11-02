@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 10:26:38 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/02 15:06:21 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 16:18:20 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	push_a(t_pushswap *data)
 		data->stack_b->next = NULL;
 	data->stack_a = data->stack_b;
 	data->stack_b = next_b;
+	add_instr(data, PA);
 }
 
 void	push_b(t_pushswap *data)
@@ -48,6 +49,7 @@ void	push_b(t_pushswap *data)
 		data->stack_a->next = NULL;
 	data->stack_b = data->stack_a;
 	data->stack_a = next_a;
+	add_instr(data, PB);
 }
 
 void	swap_a(t_pushswap *data)
@@ -62,6 +64,7 @@ void	swap_a(t_pushswap *data)
 	second_node->next = data->stack_a;
 	data->stack_a = second_node;
 	second_node->prev = NULL;
+	add_instr(data, SA);
 }
 
 void	swap_b(t_pushswap *data)
@@ -76,4 +79,5 @@ void	swap_b(t_pushswap *data)
 	second_node->next = data->stack_b;
 	data->stack_b = second_node;
 	second_node->prev = NULL;
+	add_instr(data, SB);
 }
