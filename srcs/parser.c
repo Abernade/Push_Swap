@@ -6,32 +6,25 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:33:11 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 11:52:05 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_bool	set_flags(char **str, t_config *flags, size_t len)
+static t_bool	set_flags(char *str, t_config *flags)
 {
-	int	i;
-
-	i = 1;
-	while (str[i])
-	{
-		if (ft_memcmp(str[i], "--bench", len + 1))
-			flags->flag_bench = 1;
-		else if (ft_memcmp(str[i], "--simple", len + 1))
-			flags->flag_simple = 1;
-		else if (ft_memcmp(str[i], "--medium", len + 1))
-			flags->flag_medium = 1;
-		else if (ft_memcmp(str[i], "--complex", len + 1))
-			flags->flag_complex = 1;
-		else if (ft_memcmp(str[i], "--adaptative", len + 1))
-			flags->flag_adaptative = 1;
-		i++;
-	}
-	if (has_flag_error(flags))
+	if (!ft_strcmp(str, "--bench"))
+		flags->flag_bench = 1;
+	else if (!ft_strcmp(str, "--simple"))
+		flags->flag_simple = 1;
+	else if (!ft_strcmp(str, "--medium"))
+		flags->flag_medium = 1;
+	else if (!ft_strcmp(str, "--complex"))
+		flags->flag_complex = 1;
+	else if (!ft_strcmp(str, "--adaptative"))
+		flags->flag_adaptative = 1;
+	else
 		return (FALSE);
 	return (TRUE);
 }
@@ -68,7 +61,7 @@ static void	del_list(void *content)
 		free(content);
 }
 
-static t_list	*get_ints(char **av, int argc)
+t_list	*parser(char **av, t_config *flags)
 {
 	int		i;
 	int		*converted;
@@ -77,35 +70,27 @@ static t_list	*get_ints(char **av, int argc)
 
 	i = 1;
 	head = NULL;
-	while (i < argc)
+	while (av[i] != NULL)
 	{
-		if (!str_is_digit(*av))
+		if (set_flags(av[i], flags) == TRUE)
+		{
+			i++;
+			continue ;
+		}
+		if (!str_is_digit(av[i]) || ft_strlen(av[i]) == 0)
 		{
 			ft_lstclear(&head, del_list);
 			return (NULL);
 		}
 		converted = (int *)malloc(sizeof(int));
-		converted[0] = ft_atoi(*av);
+		converted[0] = ft_atoi(av[i]);
 		new = ft_lstnew(converted);
 		ft_lstadd_back(&head, new);
-		av++;
 		i++;
 	}
-	return (head);
-}
-
-t_list	*parser(char **av, int argc, t_config *flags)
-{
-	int		i;
-	t_list	*head;
-
-	i = 1; //on veux pas l'exec
-	av++;
-	if (set_flags(av, flags, ft_strlen(*av)))
-		head = get_ints(av, argc);
-	else
+	if (has_flag_error(flags))
 	{
-		msg_error();
+		ft_lstclear(&head, del_list);
 		return (NULL);
 	}
 	return (head);

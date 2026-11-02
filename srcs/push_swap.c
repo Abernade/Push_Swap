@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 11:34:29 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 11:52:03 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,24 @@ int	main(int argc, char **av)
 	data = pushswap_init();
 	if (!data)
 		return (1);
-	new = parser(av, argc, data->config);
+	new = parser(av, data->config);
 	if (!new)
 		return (1);
 	if (has_flag_error(data->config))
 	{
-		printf("flag error\n");
 		msg_error();
+		return (1);
+	}
+	new = parser(av, data->config);
+	if (!new)
+	{
+		msg_error();
+		return (1);
 	}
 	if (has_duplicate(new))
 	{
-		printf("duplicate error\n");
 		msg_error();
+		return (1);
 	}
 	size = ft_lstsize(new);
 	data->config->disorder = disorder(new, size);
