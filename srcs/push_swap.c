@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:25:53 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 09:44:43 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,20 @@ int	main(int argc, char **av)
 
 	flag_init(&flags);
 	if (argc < 2)
-		return (1);
-	new = parser(av, argc, &flags);
-	if (!new)
-		return (1);
-	if (has_flag_error(&flags))
 	{
-		printf("flag error\n");
 		msg_error();
+		return (1);
+	}
+	new = parser(av, &flags);
+	if (!new)
+	{
+		msg_error();
+		return (1);
 	}
 	if (has_duplicate(new))
 	{
-		printf("duplicate error\n");
 		msg_error();
+		return (1);
 	}
 	size = ft_lstsize(new);
 	flags.disorder = disorder(new, size);
