@@ -6,22 +6,43 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:25:53 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 11:34:29 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	flag_init(t_config *flags)
+static t_config	*config_init()
 {
-	if (!flags)
-		return ;
-	flags->flag_adaptative = 0;
-	flags->flag_bench = 0;
-	flags->flag_complex = 0;
-	flags->flag_medium = 0;
-	flags->flag_simple = 0;
-	flags->disorder = -1;
+	t_config	*config;
+
+	config = (t_config *)malloc(sizeof(t_config));
+	if (!config)
+		return (NULL);
+	config->flag_adaptative = 0;
+	config->flag_bench = 0;
+	config->flag_complex = 0;
+	config->flag_medium = 0;
+	config->flag_simple = 0;
+	config->disorder = -1;
+	return (config);
+}
+
+static t_pushswap	*pushswap_init()
+{
+	t_pushswap	*data;
+
+	data = (t_pushswap *)malloc(sizeof(t_pushswap));
+	if (!data)
+		return (NULL);
+	ft_bzero(data, sizeof(t_pushswap));
+	data->config = config_init();
+	if (!data->config)
+	{
+		free(data);
+		return (NULL);
+	}
+	return (data);
 }
 
 /*static void	algo_adaptator(swap *flags)
@@ -44,17 +65,19 @@ static void	del_list(void *content)
 
 int	main(int argc, char **av)
 {
-	t_config		flags;
+	t_pushswap		*data;
 	t_list			*new;
 	unsigned int	size;
 
-	flag_init(&flags);
 	if (argc < 2)
 		return (1);
-	new = parser(av, argc, &flags);
+	data = pushswap_init();
+	if (!data)
+		return (1);
+	new = parser(av, argc, data->config);
 	if (!new)
 		return (1);
-	if (has_flag_error(&flags))
+	if (has_flag_error(data->config))
 	{
 		printf("flag error\n");
 		msg_error();
@@ -65,8 +88,8 @@ int	main(int argc, char **av)
 		msg_error();
 	}
 	size = ft_lstsize(new);
-	flags.disorder = disorder(new, size);
-	print_config(&flags);
+	data->config->disorder = disorder(new, size);
+	print_config(data->config);
 	print_stack(new);
 	ft_lstclear(&new, del_list);
 	return (0);

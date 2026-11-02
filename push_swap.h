@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:19:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/02 10:37:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef enum
 	TRUE
 }	t_bool;
 
+
 typedef struct s_config
 {
 	t_bool	flag_simple;
@@ -33,6 +34,14 @@ typedef struct s_config
 	t_bool	flag_bench;
 	float	disorder;
 }	t_config;
+
+typedef struct s_pushswap
+{
+	t_config	*config;
+	t_list		*stack_a;
+	t_list		*stack_b;
+	t_list		*instructions;
+}	t_pushswap;
 
 // test_utils.c
 void	print_stack(t_list *stack);
