@@ -6,7 +6,11 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:51:57 by arbernad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/11/03 09:21:34 by arbernad         ###   ########.fr       */
+=======
+/*   Updated: 2026/11/02 16:37:31 by vldryga          ###   ########.fr       */
+>>>>>>> bbf2c11bdb618058a5dd3857b6fbd71462d5b900
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +18,7 @@
 
 static char	*get_instr_str(int instr)
 {
-	char	*str;
+	char	*str = NULL;
 
 	str = NULL;
 	if (instr == SA)
