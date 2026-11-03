@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 09:57:14 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 10:20:54 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ static t_pushswap	*pushswap_init()
 	return (data);
 }
 
+static void	free_all(t_pushswap *data)
+{
+	free(data->config);
+	ft_lstclear(&data->stack_a, &del_list);
+	ft_lstclear(&data->stack_b, &del_list);
+	ft_lstclear(&data->instructions, &del_list);
+	free(data);
+}
+
 /*static void	algo_adaptator(swap *flags)
 {
 	if (flags->flag_adaptative)
@@ -56,12 +65,6 @@ static t_pushswap	*pushswap_init()
 	else if (flags->flag_complex)
 		complex();
 }*/
-
-static void	del_list(void *content)
-{
-	if (content)
-		free(content);
-}
 
 int	main(int argc, char **av)
 {
@@ -91,24 +94,30 @@ int	main(int argc, char **av)
 	print_config(data->config);
 
 	print_stacks(data);
+	print_instruction_list(data);
 
 	rotate_a(data);
 	print_stacks(data);
+	print_instruction_list(data);
 
 	reverse_rotate_a(data);
 	print_stacks(data);
+	print_instruction_list(data);
 
 	push_b(data);
 	rotate_a(data);
 	print_stacks(data);
+	print_instruction_list(data);
 
 	reverse_rotate_a(data);
 	print_stacks(data);
+	print_instruction_list(data);
 	push_b(data);
 	push_b(data);
 
 	print_stacks(data);
+	print_instruction_list(data);
 
-	ft_lstclear(&data->stack_a, del_list);
+	free_all(data);
 	return (0);
 }
