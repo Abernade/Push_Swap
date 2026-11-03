@@ -6,22 +6,23 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 10:26:38 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/02 16:18:20 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 09:27:48 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_pushswap *data)
+int	push_a(t_pushswap *data)
 {
 	t_list	*next_b;
 
 	if (!data->stack_b)
-		return ;
+		return (0);
 	next_b = data->stack_b->next;
 	if (data->stack_a)
 	{
-		data->stack_b->next->prev = NULL;
+		if (data->stack_b->next)
+			data->stack_b->next->prev = NULL;
 		data->stack_b->next = data->stack_a;
 		data->stack_a->prev = data->stack_b;
 	}
@@ -29,19 +30,22 @@ void	push_a(t_pushswap *data)
 		data->stack_b->next = NULL;
 	data->stack_a = data->stack_b;
 	data->stack_b = next_b;
-	add_instr(data, PA);
+	if(add_instr(data, PA))
+		return (1);
+	return (0);
 }
 
-void	push_b(t_pushswap *data)
+int	push_b(t_pushswap *data)
 {
 	t_list	*next_a;
 
 	if (!data->stack_a)
-		return ;
+		return (0);
 	next_a = data->stack_a->next;
 	if (data->stack_b)
 	{
-		data->stack_a->next->prev = NULL;
+		if (data->stack_a->next)
+			data->stack_a->next->prev = NULL;
 		data->stack_a->next = data->stack_b;
 		data->stack_b->prev = data->stack_a;
 	}
@@ -49,35 +53,41 @@ void	push_b(t_pushswap *data)
 		data->stack_a->next = NULL;
 	data->stack_b = data->stack_a;
 	data->stack_a = next_a;
-	add_instr(data, PB);
+	if(add_instr(data, PB))
+		return (1);
+	return (0);
 }
 
-void	swap_a(t_pushswap *data)
+int	swap_a(t_pushswap *data)
 {
 	t_list	*second_node;
 
 	if (!data->stack_a || !data->stack_a->next)
-		return ;
+		return (0);
 	second_node = data->stack_a->next;
 	data->stack_a->next = second_node->next;
 	data->stack_a->prev = second_node;
 	second_node->next = data->stack_a;
 	data->stack_a = second_node;
 	second_node->prev = NULL;
-	add_instr(data, SA);
+	if (add_instr(data, SA))
+		return (1);
+	return (0);
 }
 
-void	swap_b(t_pushswap *data)
+int	swap_b(t_pushswap *data)
 {
 	t_list	*second_node;
 
 	if (!data->stack_b || !data->stack_b->next)
-		return ;
+		return (0);
 	second_node = data->stack_b->next;
 	data->stack_b->next = second_node->next;
 	data->stack_b->prev = second_node;
 	second_node->next = data->stack_b;
 	data->stack_b = second_node;
 	second_node->prev = NULL;
-	add_instr(data, SB);
+	if (add_instr(data, SB))
+		return (1);
+	return (0);
 }

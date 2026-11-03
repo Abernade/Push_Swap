@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 12:50:54 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 09:54:48 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	del_list(void *content)
 int	main(int argc, char **av)
 {
 	t_pushswap		*data;
-	t_list			*new;
 	unsigned int	size;
 
 	if (argc < 2)
@@ -74,23 +73,42 @@ int	main(int argc, char **av)
 	data = pushswap_init();
 	if (!data)
 		return (1);
-	new = parser(av, data->config);
-	if (!new)
+	data->stack_a = parser(av, data->config);
+	if (!data->stack_a)
 		return (1);
 	if (has_flag_error(data->config))
 	{
 		msg_error();
 		return (1);
 	}
-	if (has_duplicate(new))
+	if (has_duplicate(data->stack_a))
 	{
 		msg_error();
 		return (1);
 	}
-	size = ft_lstsize(new);
-	data->config->disorder = disorder(new, size);
+	size = ft_lstsize(data->stack_a);
+	data->config->disorder = disorder(data->stack_a, size);
 	print_config(data->config);
-	print_stack(new);
-	ft_lstclear(&new, del_list);
+
+	print_stacks(data);
+
+	rotate_a(data);
+	print_stacks(data);
+
+	reverse_rotate_a(data);
+	print_stacks(data);
+
+	push_b(data);
+	rotate_a(data);
+	print_stacks(data);
+
+	reverse_rotate_a(data);
+	print_stacks(data);
+	push_b(data);
+	push_b(data);
+
+	print_stacks(data);
+
+	ft_lstclear(&data->stack_a, del_list);
 	return (0);
 }
