@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/03 09:20:59 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/03 12:19:55 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_DIR := srcs
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
+# PENSER A ENLEVER test_utils.c
 SRC := push_swap.c \
 		parser.c \
 		test_utils.c \
@@ -23,7 +24,8 @@ SRC := push_swap.c \
 		error.c \
 		instr_push_swap.c \
 		instr_rotate.c \
-		instr_utils.c
+		instr_utils.c \
+		indexer.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)

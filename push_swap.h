@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 10:10:29 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 12:16:44 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,19 @@ typedef struct s_pushswap
 	t_list		*instructions;
 }	t_pushswap;
 
-// test_utils.c
-void	print_stacks(t_pushswap *data);
+/**
+ *	/!\ TO BE DELETED /!\
+ * 	test_utils.c functions and bitflags
+ */
+#define PRINT_NB 1
+#define PRINT_IDX 2
+#define PRINT_INSTRUCTIONS 4
+
+void	print_stacks(t_pushswap *data, int biflags);
 void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
+
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);
@@ -91,5 +99,13 @@ int		add_instr(t_pushswap *data, int instr);
 
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
+
+
+/**
+ *	BUCKET SORT
+ */
+
+// indexer.c
+void	indexer(t_list *stack);
 
 #endif

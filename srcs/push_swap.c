@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 10:22:10 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 12:19:47 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,32 +91,9 @@ int	main(int argc, char **av)
 	}
 	size = ft_lstsize(data->stack_a);
 	data->config->disorder = disorder(data->stack_a, size);
-	print_config(data->config);
 
-	print_stacks(data);
-	print_instruction_list(data);
-
-	rotate_a(data);
-	print_stacks(data);
-	print_instruction_list(data);
-
-	reverse_rotate_a(data);
-	print_stacks(data);
-	print_instruction_list(data);
-
-	push_b(data);
-	rotate_a(data);
-	print_stacks(data);
-	print_instruction_list(data);
-
-	reverse_rotate_a(data);
-	print_stacks(data);
-	print_instruction_list(data);
-	push_b(data);
-	push_b(data);
-
-	print_stacks(data);
-	print_instruction_list(data);
+	indexer(data->stack_a);
+	print_stacks(data, PRINT_NB | PRINT_IDX);
 
 	free_all(data);
 	return (0);
