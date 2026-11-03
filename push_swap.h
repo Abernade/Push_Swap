@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 09:57:53 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 10:10:29 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ typedef struct s_pushswap
 void	print_stacks(t_pushswap *data);
 void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
+void	print_instruction_list(t_pushswap *data);
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);
 double	disorder(t_list *list_a, unsigned int size);
+void	del_list(void *content);
 
 // error.c
 t_bool	has_flag_error(t_config *config);

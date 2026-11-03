@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/03 09:57:13 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 10:03:56 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,24 @@ void	print_config(t_config *config)
 	printf("disorder:\t%f\n\n", config->disorder);
 }
 
+void	print_instruction_list(t_pushswap *data)
+{
+	t_list	*instr;
+
+	printf("\n===== INSTRUCTIONS =====\n\n");
+	instr = data->instructions;
+	while (instr)
+	{
+		printf("%s\n", (char *)instr->content);
+		instr = instr->next;
+	}
+}
+
 void	print_stacks(t_pushswap *data)
 {
 	t_list	*stack;
 
-	printf("\n===== STACKS =====");
+	printf("\n===== STACKS =====\n\n");
 	stack = data->stack_a;
 	printf("Stack A:\n");
 	while (stack)

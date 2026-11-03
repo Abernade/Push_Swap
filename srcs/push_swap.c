@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 10:06:36 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/03 11:01:25 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ static t_pushswap	*pushswap_init()
 	return (data);
 }
 
+static void	free_all(t_pushswap *data)
+{
+	free(data->config);
+	ft_lstclear(&data->stack_a, &del_list);
+	ft_lstclear(&data->stack_b, &del_list);
+	ft_lstclear(&data->instructions, &del_list);
+	free(data);
+}
+
 /*static void	algo_adaptator(swap *flags)
 {
 	if (flags->flag_adaptative)
@@ -56,12 +65,6 @@ static t_pushswap	*pushswap_init()
 	else if (flags->flag_complex)
 		complex();
 }*/
-
-static void	del_list(void *content)
-{
-	if (content)
-		free(content);
-}
 
 int	main(int argc, char **av)
 {

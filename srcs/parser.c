@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 16:30:07 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/03 10:08:03 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	str_is_digit(char *str)
 }
 
 
-static void	del_list(void *content)
+void	del_list(void *content)
 {
 	if (content)
 		free(content);

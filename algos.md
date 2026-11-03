@@ -19,3 +19,13 @@ while(stack_a){
 	}
 }
 ```
+
+## Bucket Sort
+
+1/ Indexer tous les éléments de la stack A du plus petit au plus grand  
+2/ Attribuer un bucket à chaque élément, le nombre de bucket est `sqrt(stack_size)`  
+3/ Push les éléments de la stack A vers la stack B de manière à les regrouper par bucket dans la stack B  
+4/ Trier l'intérieur de chaque bucket de la stack B avec un algo plus simple (i.e. insertion ou bubble sort)  
+5/ Repush les éléments dans la stack A
+
+Note: Trier les éléments à l'envers dans la stack B permettrait de les repush dans la stack A sans avoir à rotate_a entre chaque push donc probablement de gagner des instructions
