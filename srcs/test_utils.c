@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/04 10:26:57 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:38:28 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	printf_stacks(t_pushswap *data)
 	t_list	*head;
 
 	head = data->stack_a;
-	while (data->stack_a)
+	while (head)
 	{
 		printf("[%d]", *(int *)head->content);
 		head = head->next;
