@@ -6,7 +6,7 @@
 #    By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/23 11:23:32 by vldryga           #+#    #+#              #
-#    Updated: 2026/11/02 08:50:10 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/04 15:19:12 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS := ft_isalpha.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
 		ft_lstlast.c \
+		ft_lstfirst.c \
 		ft_lstadd_back.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
