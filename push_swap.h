@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 13:50:08 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/04 14:32:38 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ typedef enum
 	TRUE
 }	t_bool;
 
+typedef struct s_ops
+{
+	int	sw_a;
+	int sw_b;
+	int psh_a;
+	int psh_b;
+	int	rt_a;
+	int	rt_b;
+	int revrt_a;
+	int	revrt_b;
+	int	total;
+}	t_ops;
 
 typedef struct s_config
 {
