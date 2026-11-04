@@ -5,19 +5,21 @@
 L'agorithme commence par comparer les deux premieres valeurs de la liste. Si la première est supperieure à la seconde, on opère une inversion passant le seconde en tete de liste: on le sort de la stack a et on le met sur la stack b puis un rotate la stack a pour trouver l'élément supérieur. On avance et on compare avec le suivant.
 
 ```c
-int i;
-i = 0;
-while(stack_a){
-	i = stack_a->content[0];
-	stack = stack->next;
-	if (i > stack->content[0]){
-		swap_a;
-		rotate_a;
-	}
-	else {
-		rotate_a;
-	}
-}
+push_b(data)
+b_max = *(int *)data->stack_b->content;
+tant que (sorted < size - 1 && data->stack_a)
+    - si stack_a[0] < stack_b[0]
+        - push_b(data);
+    sinon (stack_a[0] > stack_b[0])
+        si (stack_a[0] > b_max)
+        push_b(); && b_max = *(int *)data->stack_b->content; && rotate_b(data);
+        sinon
+            tant que (stack_b[0] < stack_a[0])
+                rotate_b(data); && count++;
+            push_b(data);
+    tant que (count > 0)
+        reverse_rotate_b(data); count--;
+    sorted++;
 ```
 
 ## Bucket Sort

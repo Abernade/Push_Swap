@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 10:10:29 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 13:49:20 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int		add_instr(t_pushswap *data, int instr);
 
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
+t_list	*simple_aa(t_pushswap *data, int size);
 
 #endif
