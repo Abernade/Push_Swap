@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/03 12:25:29 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:26:57 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	print_stacks(t_pushswap *data, int bitflags)
 			printf("nb:\t%d\t\t", *(int *)stack->content);
 		if (bitflags & PRINT_IDX)
 			printf("idx:\t%d\t\t", stack->index);
+		if (bitflags & PRINT_BUCKET)
+			printf("bucket:\t%d", stack->bucket);
 		stack = stack->next;
 		printf("\n");
 	}
@@ -62,6 +64,8 @@ void	print_stacks(t_pushswap *data, int bitflags)
 			printf("nb:\t%d\t\t", *(int *)stack->content);
 		if (bitflags & PRINT_IDX)
 			printf("idx:\t%d\t\t", stack->index);
+		if (bitflags & PRINT_BUCKET)
+			printf("bucket:\t%d", stack->bucket);
 		stack = stack->next;
 		printf("\n");
 	}

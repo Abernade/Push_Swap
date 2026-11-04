@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/03 12:19:55 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/04 10:24:14 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC := push_swap.c \
 		instr_push_swap.c \
 		instr_rotate.c \
 		instr_utils.c \
-		indexer.c
+		indexer.c \
+		bucket_init.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)

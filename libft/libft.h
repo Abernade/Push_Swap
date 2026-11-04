@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 10:55:54 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/04 09:22:49 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 	int				index;
+	int				bucket;
 }	t_list;
 
 /* libc functions */
