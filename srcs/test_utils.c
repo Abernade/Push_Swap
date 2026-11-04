@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/04 08:35:05 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/04 08:54:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_instruction_list(t_pushswap *data)
 	}
 }
 
-void	print_stacks(t_pushswap *data)
+void	print_stacks(t_pushswap *data, int bitflags)
 {
 	t_list	*stack;
 
@@ -45,8 +45,12 @@ void	print_stacks(t_pushswap *data)
 	printf("Stack A:\n");
 	while (stack)
 	{
-		printf("%d\n", *(int *)stack->content);
+		if (bitflags & PRINT_NB)
+			printf("nb:\t%d\t\t", *(int *)stack->content);
+		if (bitflags & PRINT_IDX)
+			printf("idx:\t%d\t\t", stack->index);
 		stack = stack->next;
+		printf("\n");
 	}
 	printf("\n");
 
@@ -54,11 +58,16 @@ void	print_stacks(t_pushswap *data)
 	printf("Stack B:\n");
 	while (stack)
 	{
-		printf("%d\n", *(int *)stack->content);
+		if (bitflags & PRINT_NB)
+			printf("nb:\t%d\t\t", *(int *)stack->content);
+		if (bitflags & PRINT_IDX)
+			printf("idx:\t%d\t\t", stack->index);
 		stack = stack->next;
+		printf("\n");
 	}
 	printf("\n");
-
+	if (bitflags & PRINT_INSTRUCTIONS)
+		print_instruction_list(data);
 }
 
 void	printf_stacks(t_pushswap *data)

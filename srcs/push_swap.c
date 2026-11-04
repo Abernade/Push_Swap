@@ -6,7 +6,8 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/03 13:49:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/04 08:54:01 by vldryga          ###   ########.fr       */
+
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +74,7 @@ int	main(int argc, char **av)
 
 	if (argc < 2)
 		return (1);
-	data = pushswap_init();
+	data = pushswap_init()srcs/push_swap.c;
 	if (!data)
 		return (1);
 	data->stack_a = parser(av, data->config);
@@ -95,6 +96,10 @@ int	main(int argc, char **av)
 	print_instruction_list(data);
 	print_config(data->config);
 	printf_stacks(data);
+
+	indexer(data->stack_a);
+	print_stacks(data, PRINT_NB | PRINT_IDX);
+
 	free_all(data);
 	return (0);
 }

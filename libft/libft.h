@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:49:12 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/03 10:55:54 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 	struct s_list	*prev;
+	int				index;
 }	t_list;
 
 /* libc functions */
