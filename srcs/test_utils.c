@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/04 10:26:57 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:43:13 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ void	print_instruction_list(t_pushswap *data)
 	}
 }
 
+/**
+ * Debug function
+ * Flags:
+ * 	PRINT_NB, print element number
+ * 	PRINT_IDX, print element index
+ * 	PRINT_BUCKET, print element bucket number
+ * 	PRINT_INSTRUCTIONS, print the instruction list after printing the stacks
+ */
 void	print_stacks(t_pushswap *data, int bitflags)
 {
 	t_list	*stack;
@@ -79,7 +87,7 @@ void	printf_stacks(t_pushswap *data)
 	t_list	*head;
 
 	head = data->stack_a;
-	while (data->stack_a)
+	while (head)
 	{
 		printf("[%d]", *(int *)head->content);
 		head = head->next;

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 10:25:20 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:39:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int	main(int argc, char **av)
 	}
 	size = ft_lstsize(data->stack_a);
 	data->config->disorder = disorder(data->stack_a, size);
+	data->stack_a = simple_aa(data, size);
+	print_instruction_list(data);
+	print_config(data->config);
+	printf_stacks(data);
 
 	indexer(data->stack_a);
 	bucket_init(data);
