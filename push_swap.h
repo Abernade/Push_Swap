@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 14:32:38 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/04 14:58:16 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ int		add_instr(t_pushswap *data, int instr);
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
 
-
+//print_bench.c
+void	print_bench(t_pushswap *data);
 	/**
 	*	BUCKET SORT
 	*/
