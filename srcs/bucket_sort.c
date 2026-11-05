@@ -6,45 +6,52 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/04 09:25:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/05 10:54:49 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_sqrt(int nb)
+static int	get_target_bucket(t_list *stack, int bucket)
 {
-	int	max;
-	int	min;
-	int	result;
+	int	closest;
 
-	max = 46341;
-	min = 0;
-	result = max / 2;
-	while (result * result != nb && max - min > 1)
+	closest = -1;
+	while (stack)
 	{
-		if (result * result > nb)
+		if (stack->bucket == bucket)
+			return (bucket);
+		else if (ft_abs(stack->bucket - bucket) < ft_abs(closest - bucket)
+				|| closest == -1)
 		{
-			max = result;
-			result -= (result - min) / 2;
+			closest = stack->bucket;
 		}
-		else
-		{
-			min = result;
-			result += (max - result) / 2;
-		}
+		stack = stack->next;
 	}
-	if (result * result > nb)
-		result--;
-	return (result);
+	return (closest);
+}
+
+static void	push_into_buckets(t_pushswap *data)
+{
+	int	bucket;
+	int	flag;
+
+	while (data->stack_a)
+	{
+		bucket = get_target_bucket(data->stack_b, data->stack_a->bucket);
+		if (bucket == data->stack_a->bucket)
+			flag = ANY;
+		else if (bucket > data->stack_a->bucket)
+			flag = BOTTOM;
+		else
+			flag = TOP;
+		push_to_bucket(data, bucket, flag);
+		print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
+	}
 }
 
 void	bucket_sort(t_pushswap *data)
 {
-	int	bucket_count;
-
-	bucket_count = ft_sqrt(ft_lstsize(data->stack_a));
-	if (bucket_count == 0)
-		bucket_count = 1;
-
+	bucket_init(data);
+	push_into_buckets(data);
 }
