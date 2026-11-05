@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/05 10:28:02 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/05 11:22:11 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ typedef enum
 	FALSE = 0,
 	TRUE
 }	t_bool;
+
+typedef struct s_ops
+{
+	int	sw_a;
+	int sw_b;
+	int psh_a;
+	int psh_b;
+	int	rt_a;
+	int	rt_b;
+	int revrt_a;
+	int	revrt_b;
+	int	total;
+}	t_ops;
 
 typedef struct s_config
 {
@@ -118,7 +131,6 @@ int		ft_sqrt(int n);
 
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
-t_list	*simple_aa(t_pushswap *data, int size);
 
 
 	/**
