@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 15:09:17 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/05 11:26:53 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ int	main(int argc, char **av)
 	print_instruction_list(data);
 	//print_config(data->config);
 	//printf_stacks(data);
-
+	bucket_sort(data);
+	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 //	indexer(data->stack_a);
 //	bucket_init(data);
 //	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);

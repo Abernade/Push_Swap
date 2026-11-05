@@ -1,4 +1,5 @@
 .clangd
+output
 
 **.o
 **.a

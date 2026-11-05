@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/04 14:59:02 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/05 11:25:33 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,20 @@ LIBFT := $(LIBFT_PATH)/libft.a
 # PENSER A ENLEVER test_utils.c
 SRC := push_swap.c \
 		parser.c \
+		math_utils.c \
+		lst_utils.c \
 		test_utils.c \
 		disorder.c \
 		error.c \
-		instr_push_swap.c \
-		instr_rotate.c \
-		instr_utils.c \
+		op_push_swap.c \
+		op_rotate.c \
+		op_utils.c \
 		indexer.c \
+		bucket_sort.c \
 		bucket_init.c \
 		algorithm_s.c \
-		print_bench.c
+		print_bench.c \
+		bucket_sort_utils.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
