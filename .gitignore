@@ -1,5 +1,8 @@
 .clangd
+
 output
+args.txt
+push_swap
 
 **.o
 **.a
