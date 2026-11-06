@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/05 15:08:56 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/06 11:29:19 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int		reverse_rotate_b(t_pushswap *data);
 
 // op_utils.c
 int		add_instr(t_pushswap *data, int instr);
+void	multi_rotations(t_pushswap *data, int rotations);
+void	reverse_multi_rotations(t_pushswap *data, int rotations);
 
 // lst_utils.c
 t_list	*lstnnext(t_list *node, int offset);
@@ -132,7 +134,8 @@ int		ft_sqrt(int n);
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
 
-
+//print_bench.c
+void	print_bench(t_pushswap *data);
 	/**
 	*	BUCKET SORT
 	*/

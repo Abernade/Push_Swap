@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:51:57 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/03 10:18:17 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/06 10:57:54 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,22 @@ int	add_instr(t_pushswap *data, int instr)
 		return (1);
 	ft_lstadd_back(&data->instructions, node);
 	return (0);
+}
+
+void multi_rotations(t_pushswap *data, int rotations)
+{
+	while (rotations > 0)
+	{
+		rotate_b(data);
+		rotations--;
+	}
+}
+
+void reverse_multi_rotations(t_pushswap *data, int rotations)
+{
+	while (rotations < 0)
+	{
+		reverse_rotate_b(data);
+		rotations++;
+	}
 }
