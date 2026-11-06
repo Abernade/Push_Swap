@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/05 11:22:11 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/05 15:08:56 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /**
  *  Bucket sort related macros
  *
- * 	Bitflags to be used in `bucket_offset_forward`
+ * 	Flags to be used in `bucket_offset_forward`
  * 	and `bucket_offset_backward` functions
  * 	`ANY` is equivalent to `TOP | BOTTOM`
  */

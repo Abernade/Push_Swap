@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/05 10:54:49 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/06 11:18:35 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	push_into_buckets(t_pushswap *data)
 	while (data->stack_a)
 	{
 		bucket = get_target_bucket(data->stack_b, data->stack_a->bucket);
-		if (bucket == data->stack_a->bucket)
+		if (bucket == data->stack_a->bucket || bucket == -1)
 			flag = ANY;
 		else if (bucket > data->stack_a->bucket)
 			flag = BOTTOM;
