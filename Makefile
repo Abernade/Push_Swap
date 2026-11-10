@@ -32,7 +32,8 @@ SRC := push_swap.c \
 		bucket_init.c \
 		algorithm_s.c \
 		print_bench.c \
-		bucket_sort_utils.c
+		bucket_sort_utils.c \
+		radix.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)

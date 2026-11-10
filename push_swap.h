@@ -152,4 +152,7 @@ void	push_to_bucket(t_pushswap *data, int bucket, int position);
 // indexer.c
 void	indexer(t_list *stack);
 
+// radix.c
+void	radix(t_pushswap *data);
+
 #endif

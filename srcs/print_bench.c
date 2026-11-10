@@ -35,11 +35,11 @@ static void	print_strategy(t_pushswap *data)
 	{
 		write(1, " strategy : Adaptative ", 24);
 		if (data->config->flag_simple)
-			write(1, "O(n^2)", 26);
+			write(1, "O(n^2)", 7);
 		else if (data->config->flag_medium)
-			write(1, "O(n√n)", 26);
+			write(1, "O(n√n)", 7);
 		else if (data->config->flag_adaptative)
-			write(1, "O(n log n)", 31);
+			write(1, "O(n log n)", 10);
 	}
 	write(1, "\n", 1);
 }

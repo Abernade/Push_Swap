@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 static int	count_bits(int nb)
 {
@@ -58,9 +59,9 @@ static void	alternate_a(t_pushswap *data, int bit)
 	len = ft_lstsize(data->stack_a);
 	while (i < len && data->stack_a)
 	{
-		if (find_bit(data->stack_a->index, bit) == 0)
+		if ((find_bit(data->stack_a->index, bit) & 1) == 0)
 			push_b(data);
-		else if (find_bit(data->stack_a->index, bit) == 1)
+		else
 			rotate_a(data);
 		i++;
 	}
@@ -85,19 +86,11 @@ static void	alternate_b(t_pushswap *data, int bit)
 
 static void	back_to_a(t_pushswap *data)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_lstsize(data->stack_b);
-	while (i < len && data->stack_b)
-	{
+	while(data->stack_b)
 		push_a(data);
-		i++;
-	}
 }
 
-t_list	*radix(t_pushswap *data)
+void	radix(t_pushswap *data)
 {
 	int	max;
 	int	bit;
@@ -107,22 +100,11 @@ t_list	*radix(t_pushswap *data)
 	print_stacks(data, PRINT_NB | PRINT_IDX);
 	max = search_biggest_index(data->stack_a);
 	max = count_bits(max);
-	while (bit < max)
+	while (bit <= max)
 	{
 		alternate_a(data, bit);
+		alternate_b(data, bit + 1);
 		bit++;
-		alternate_b(data, bit);
 	}
 	back_to_a(data);
-	return (data->stack_a);
 }
-
-/*int	main(int ac, char **av)
-{
-	if (ac < 2)
-		return (1);
-	printf("[%d]\n", atoi(av[1]));
-	printf("[%d]\n", count_bits(atoi(av[1])));
-	printf("[%d]\n", find_bit(atoi(av[1]), atoi(av[2])));
-	return (0);
-	}*/

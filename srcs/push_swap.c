@@ -91,15 +91,9 @@ int	main(int argc, char **av)
 	}
 	size = ft_lstsize(data->stack_a);
 	data->config->disorder = disorder(data->stack_a, size);
-	//data->stack_a = simple_a(data, size);
 	print_instruction_list(data);
-	//print_config(data->config);
-	//printf_stacks(data);
-	bucket_sort(data);
-	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
-//	indexer(data->stack_a);
-//	bucket_init(data);
-//	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
+	radix(data);
+	print_stacks(data, PRINT_INSTRUCTIONS);
 	print_bench(data);
 	free_all(data);
 	return (0);
