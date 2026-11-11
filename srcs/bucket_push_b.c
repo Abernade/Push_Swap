@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 16:14:24 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/10 17:23:11 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 14:48:29 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	rotate(t_pushswap *data ,t_ops *rotations)
 	}
 	while (rotations->rt_b)
 	{
-		rotate_a(data);
+		rotate_b(data);
 		rotations->rt_b--;
 	}
 	while (rotations->revrt_a)
