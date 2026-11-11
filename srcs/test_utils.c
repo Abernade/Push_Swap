@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/10 15:27:25 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 11:58:22 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,27 @@ void	print_stacks(t_pushswap *data, int bitflags)
 	while (stack)
 	{
 		if (bitflags & PRINT_NB)
-			printf("nb:\t%d\t\t", *(int *)stack->content);
+			printf("nb: %d\t", *(int *)stack->content);
 		if (bitflags & PRINT_IDX)
-			printf("idx:\t%d\t\t", stack->index);
+			printf("idx: %d\t", stack->index);
 		if (bitflags & PRINT_BUCKET)
-			printf("bucket:\t%d\t\t", stack->bucket);
+			printf("bucket: %d\t", stack->bucket);
 		if (bitflags & PRINT_PREVISION_A)
 		{
-			printf("\n-prev:\n\ttotal:\t%d", stack->prevision.total);
-			printf("\tra: %d\t", stack->prevision.rt_a);
-			printf("\t\trb: %d\t", stack->prevision.rt_b);
-			printf("\t\trra: %d\t", stack->prevision.revrt_a);
-			printf("\t\trrb: %d", stack->prevision.revrt_b);
+			printf("\nprevision: { total: %d", stack->prevision.total);
+			if (stack->prevision.rt_a)
+				printf(" ,ra: %d", stack->prevision.rt_a);
+			if (stack->prevision.rt_b)
+				printf(" ,rb: %d", stack->prevision.rt_b);
+			if (stack->prevision.revrt_a)
+				printf(" ,rra: %d", stack->prevision.revrt_a);
+			if (stack->prevision.revrt_b)
+				printf(" ,rrb: %d", stack->prevision.revrt_b);
+			if (stack->prevision.psh_a)
+				printf(" ,pa: %d", stack->prevision.psh_a);
+			if (stack->prevision.psh_b)
+				printf(" ,pb: %d", stack->prevision.psh_b);
+			printf(" }");
 		}
 		stack = stack->next;
 		printf("\n");
@@ -77,18 +86,27 @@ void	print_stacks(t_pushswap *data, int bitflags)
 	while (stack)
 	{
 		if (bitflags & PRINT_NB)
-			printf("nb:\t%d\t\t", *(int *)stack->content);
+			printf("nb: %d\t", *(int *)stack->content);
 		if (bitflags & PRINT_IDX)
-			printf("idx:\t%d\t\t", stack->index);
+			printf("idx: %d\t", stack->index);
 		if (bitflags & PRINT_BUCKET)
-			printf("bucket:\t%d\t\t", stack->bucket);
+			printf("bucket: %d\t", stack->bucket);
 		if (bitflags & PRINT_PREVISION_B)
 		{
-			printf("\n\t-prev:\n\ttotal:\t%d", stack->prevision.total);
-			printf("\t\tra:\t%d\t\t", stack->prevision.rt_a);
-			printf("\t\trb:\t%d\t\t", stack->prevision.rt_b);
-			printf("\t\trra:\t%d\t\t", stack->prevision.revrt_a);
-			printf("\t\trrb:\t%d\t\t", stack->prevision.revrt_b);
+			printf("\nprevision: { total: %d", stack->prevision.total);
+			if (stack->prevision.rt_a)
+				printf(" ,ra: %d", stack->prevision.rt_a);
+			if (stack->prevision.rt_b)
+				printf(" ,rb: %d", stack->prevision.rt_b);
+			if (stack->prevision.revrt_a)
+				printf(" ,rra: %d", stack->prevision.revrt_a);
+			if (stack->prevision.revrt_b)
+				printf(" ,rrb: %d", stack->prevision.revrt_b);
+			if (stack->prevision.psh_a)
+				printf(" ,pa: %d", stack->prevision.psh_a);
+			if (stack->prevision.psh_b)
+				printf(" ,pb: %d", stack->prevision.psh_b);
+			printf(" }");
 		}
 		stack = stack->next;
 		printf("\n");
