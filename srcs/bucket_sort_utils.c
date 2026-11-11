@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:14:14 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/06 11:42:51 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 11:27:58 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	dist_from_bucket_top(t_list *stack, int bucket)
 	return (offset);
 }
 
-static int	bucket_offset_forward(t_list *stack, int bucket, int position)
+int	bucket_offset_forward(t_list *stack, int bucket, int position)
 {
 	int		offset;
 
@@ -71,7 +71,7 @@ static int	bucket_offset_forward(t_list *stack, int bucket, int position)
 	return (offset);
 }
 
-static int	bucket_offset_backward(t_list *stack, int bucket, int position)
+int	bucket_offset_backward(t_list *stack, int bucket, int position)
 {
 	int		offset;
 

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 15:19:08 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 14:18:00 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_ops
+{
+	int	sw_a;
+	int sw_b;
+	int psh_a;
+	int psh_b;
+	int	rt_a;
+	int	rt_b;
+	int revrt_a;
+	int	revrt_b;
+	int	total;
+}	t_ops;
+
 typedef struct s_list
 {
 	void			*content;
@@ -23,6 +36,7 @@ typedef struct s_list
 	struct s_list	*prev;
 	int				index;
 	int				bucket;
+	t_ops			prevision;
 }	t_list;
 
 /* libc functions */

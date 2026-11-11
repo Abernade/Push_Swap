@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/05 11:22:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 15:27:25 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,15 @@ void	print_stacks(t_pushswap *data, int bitflags)
 		if (bitflags & PRINT_IDX)
 			printf("idx:\t%d\t\t", stack->index);
 		if (bitflags & PRINT_BUCKET)
-			printf("bucket:\t%d", stack->bucket);
+			printf("bucket:\t%d\t\t", stack->bucket);
+		if (bitflags & PRINT_PREVISION_A)
+		{
+			printf("\n-prev:\n\ttotal:\t%d", stack->prevision.total);
+			printf("\tra: %d\t", stack->prevision.rt_a);
+			printf("\t\trb: %d\t", stack->prevision.rt_b);
+			printf("\t\trra: %d\t", stack->prevision.revrt_a);
+			printf("\t\trrb: %d", stack->prevision.revrt_b);
+		}
 		stack = stack->next;
 		printf("\n");
 	}
@@ -73,7 +81,15 @@ void	print_stacks(t_pushswap *data, int bitflags)
 		if (bitflags & PRINT_IDX)
 			printf("idx:\t%d\t\t", stack->index);
 		if (bitflags & PRINT_BUCKET)
-			printf("bucket:\t%d", stack->bucket);
+			printf("bucket:\t%d\t\t", stack->bucket);
+		if (bitflags & PRINT_PREVISION_B)
+		{
+			printf("\n\t-prev:\n\ttotal:\t%d", stack->prevision.total);
+			printf("\t\tra:\t%d\t\t", stack->prevision.rt_a);
+			printf("\t\trb:\t%d\t\t", stack->prevision.rt_b);
+			printf("\t\trra:\t%d\t\t", stack->prevision.revrt_a);
+			printf("\t\trrb:\t%d\t\t", stack->prevision.revrt_b);
+		}
 		stack = stack->next;
 		printf("\n");
 	}
