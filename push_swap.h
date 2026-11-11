@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/10 16:20:23 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 11:23:09 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int		ft_sqrt(int n);
 int		max(int a, int b);
 
 // algo_simple.c
-t_list	*simple_a(t_pushswap *data, int size);
+t_list	*nsertion_sort(t_pushswap *data, int size);
 
 //print_bench.c
 void	print_bench(t_pushswap *data);
@@ -154,5 +154,8 @@ t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
 
 // indexer.c
 void	indexer(t_list *stack);
+
+// radix.c
+void	radix(t_pushswap *data);
 
 #endif

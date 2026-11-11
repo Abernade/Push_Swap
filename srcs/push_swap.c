@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/10 15:16:02 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 11:23:38 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ static void	free_all(t_pushswap *data)
 	ft_lstclear(&data->instructions, &del_list);
 	free(data);
 }
-
-/*static void	algo_adaptator(swap *flags)
-{
-	if (flags->flag_adaptative)
-		adaptative();
-	else if (flags->flag_simple)
-		simple();
-	else if(flags->flag_medium)
-		medium();
-	else if (flags->flag_complex)
-		complex();
-}*/
 
 int	main(int argc, char **av)
 {

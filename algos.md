@@ -31,3 +31,64 @@ tant que (sorted < size - 1 && data->stack_a)
 5/ Repush les éléments dans la stack A
 
 Note: Trier les éléments à l'envers dans la stack B permettrait de les repush dans la stack A sans avoir à rotate_a entre chaque push donc probablement de gagner des instructions
+
+## RADIX
+
+```c
+equenceDiagram
+    participant PS as push_swap
+    participant A as Stack A
+    participant B as Stack B
+
+    PS->>A: assign_indices()
+    note right of PS: Replace each value in A with its sorted index
+
+    loop For each bit in 0..bit_count
+        alt bit = 0
+            A->>B: pb
+            note over A,B: Move top from A to B
+        else bit = 1
+            A->>A: ra
+            note over A: Rotate stack A upwards
+        end
+
+        alt Next bit in B
+            B->>A: pa
+            note over B,A: Push top from B to A if bit=1
+            B->>B: rb
+            note over B: Rotate B if bit=0
+        end
+    end
+
+    PS->>B: push_all_from_b_to_a()
+    note right of PS: Gather all elements back into A
+
+    PS->>A: give_values_back()
+    note right of PS: Convert indexed values back to the original integers
+```
+
+## Radix sort
+
+With the radix sort we are stuck at 6771 moves for 500 numbers.
+
+```c
+indexer;
+max = higthest idex;
+max = count_bits;
+for (bit = 0 && bit <= max, bit++)
+	if (bit actuel == 0)
+		push_b();
+	else
+		rotate_a();
+	fin;
+	if (bit actuel + 1 dans b == 1)
+		push_a();
+	else
+		rotate_b();
+	fin;
+push_bach_to_a;
+```
+
+## Turkish sort algorithm
+
+Need to have more info about that one.

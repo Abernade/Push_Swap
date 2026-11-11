@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 13:49:28 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/09 14:01:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,14 @@ static void	searching_on_going(t_pushswap *data, int a, int b, int b_max)
 	}
 }
 
-t_list	*simple_a(t_pushswap *data, int size)
+t_list	*insertion_sort(t_pushswap *data, int size)
 {
 	int	sorted;
 	int	a;
 	int	b;
-	int	count;
 	int	b_max;
 
 	sorted = 0;
-	count = 0;
 	push_b(data);
 	b_max = *(int *)data->stack_b->content;
 	while (sorted < size - 1 && data->stack_a)
