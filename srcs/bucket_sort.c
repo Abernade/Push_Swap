@@ -6,49 +6,11 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/06 11:28:59 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 16:34:08 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	get_target_bucket(t_list *stack, int bucket)
-{
-	int	closest;
-
-	closest = -1;
-	while (stack)
-	{
-		if (stack->bucket == bucket)
-			return (bucket);
-		else if (ft_abs(stack->bucket - bucket) < ft_abs(closest - bucket)
-				|| closest == -1)
-		{
-			closest = stack->bucket;
-		}
-		stack = stack->next;
-	}
-	return (closest);
-}
-
-static void	push_into_buckets(t_pushswap *data)
-{
-	int	bucket;
-	int	flag;
-
-	while (data->stack_a)
-	{
-		bucket = get_target_bucket(data->stack_b, data->stack_a->bucket);
-		if (bucket == data->stack_a->bucket || bucket == -1)
-			flag = ANY;
-		else if (bucket > data->stack_a->bucket)
-			flag = BOTTOM;
-		else
-			flag = TOP;
-		push_to_bucket(data, bucket, flag);
-		print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
-	}
-}
 
 static int	find_biggest_in_bucket(t_list *stack)
 {
@@ -57,7 +19,6 @@ static int	find_biggest_in_bucket(t_list *stack)
 	int	forward = 0;
 	int back = 0;
 
-	printf("\nmax size of stack = [%d]\n", max);
 	while (stack)
 	{
 		found = stack->index;
@@ -84,7 +45,6 @@ static void	sort_in_buckets(t_pushswap *data)
 		else if (pos < 0)
 			reverse_multi_rotations(data, pos);
 		push_a(data);
-		print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 	}
 }
 
@@ -92,5 +52,9 @@ void	bucket_sort(t_pushswap *data)
 {
 	bucket_init(data);
 	push_into_buckets(data);
+	// print_bench(data);
+	printf("=== push back to A ===");
+	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 	sort_in_buckets(data);
+	// print_bench(data);
 }

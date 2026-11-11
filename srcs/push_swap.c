@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/06 11:28:41 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 15:16:02 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static void	free_all(t_pushswap *data)
 int	main(int argc, char **av)
 {
 	t_pushswap		*data;
-	unsigned int	size;
 
 	if (argc < 2)
 		return (1);
@@ -89,18 +88,19 @@ int	main(int argc, char **av)
 		msg_error();
 		return (1);
 	}
-	size = ft_lstsize(data->stack_a);
-	data->config->disorder = disorder(data->stack_a, size);
+	data->a_size = ft_lstsize(data->stack_a);
+	data->b_size = 0;
+	data->config->disorder = disorder(data->stack_a, data->a_size);
 	//data->stack_a = simple_a(data, size);
-	print_instruction_list(data);
+	// print_instruction_list(data);
 	//print_config(data->config);
 	//printf_stacks(data);
 	bucket_sort(data);
-	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
+	// print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 //	indexer(data->stack_a);
 //	bucket_init(data);
 //	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
-	print_bench(data);
+	// print_bench(data);
 	free_all(data);
 	return (0);
 }

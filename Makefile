@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/06 11:29:17 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/10 16:34:41 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ SRC := push_swap.c \
 		indexer.c \
 		bucket_sort.c \
 		bucket_init.c \
+		bucket_sort_utils.c \
+		bucket_sort_prevision.c \
+		bucket_push_b.c \
 		algorithm_s.c \
-		print_bench.c \
-		bucket_sort_utils.c
+		print_bench.c
 
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)

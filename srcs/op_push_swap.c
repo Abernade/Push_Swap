@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 10:26:38 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/05 10:39:53 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 15:06:30 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	push_a(t_pushswap *data)
 		next_b = NULL;
 	if(add_instr(data, PA))
 		return (1);
+	data->a_size++;
+	data->b_size--;
 	return (0);
 }
 
@@ -59,6 +61,8 @@ int	push_b(t_pushswap *data)
 		next_a->prev = NULL;
 	if(add_instr(data, PB))
 		return (1);
+	data->a_size--;
+	data->b_size++;
 	return (0);
 }
 

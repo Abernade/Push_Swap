@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/06 11:29:19 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/10 16:20:23 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,6 @@ typedef enum
 	TRUE
 }	t_bool;
 
-typedef struct s_ops
-{
-	int	sw_a;
-	int sw_b;
-	int psh_a;
-	int psh_b;
-	int	rt_a;
-	int	rt_b;
-	int revrt_a;
-	int	revrt_b;
-	int	total;
-}	t_ops;
-
 typedef struct s_config
 {
 	t_bool	flag_simple;
@@ -79,7 +66,8 @@ typedef struct s_pushswap
 	t_list		*stack_a;
 	t_list		*stack_b;
 	t_list		*instructions;
-	int			size;
+	int			a_size;
+	int			b_size;
 }	t_pushswap;
 
 /**
@@ -90,11 +78,15 @@ typedef struct s_pushswap
 #define PRINT_IDX 2
 #define PRINT_BUCKET 4
 #define PRINT_INSTRUCTIONS 8
+#define PRINT_PREVISION_A 16
+#define PRINT_PREVISION_B 32
 
 void	print_stacks(t_pushswap *data, int bitflags);
 void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
+
+
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);
@@ -130,12 +122,15 @@ t_list	*lstnprev(t_list *node, int offset);
 // math_utils.c
 int		ft_abs(int n);
 int		ft_sqrt(int n);
+int		max(int a, int b);
 
 // algo_simple.c
 t_list	*simple_a(t_pushswap *data, int size);
 
 //print_bench.c
 void	print_bench(t_pushswap *data);
+
+
 	/**
 	*	BUCKET SORT
 	*/
@@ -143,11 +138,19 @@ void	print_bench(t_pushswap *data);
 // bucket_sort.c
 void	bucket_sort(t_pushswap *data);
 
+// bucket_push_b.c
+void	push_into_buckets(t_pushswap *data);
+
 // bucket_init.c
 void	bucket_init(t_pushswap *data);
 
 // bucket_sort_utils.c
 void	push_to_bucket(t_pushswap *data, int bucket, int position);
+int		bucket_offset_forward(t_list *stack, int bucket, int position);
+int		bucket_offset_backward(t_list *stack, int bucket, int position);
+
+// bucket_sort_prevision.c
+t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
 
 // indexer.c
 void	indexer(t_list *stack);
