@@ -58,11 +58,9 @@ t_list	*insertion_sort(t_pushswap *data, int size)
 	int	sorted;
 	int	a;
 	int	b;
-	int	count;
 	int	b_max;
 
 	sorted = 0;
-	count = 0;
 	push_b(data);
 	b_max = *(int *)data->stack_b->content;
 	while (sorted < size - 1 && data->stack_a)

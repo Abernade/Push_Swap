@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/09 14:35:26 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 09:46:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,6 @@ void	push_to_bucket(t_pushswap *data, int bucket, int position);
 void	indexer(t_list *stack);
 
 // radix.c
-t_list	*radix(t_pushswap *data);
+void	radix(t_pushswap *data);
 
 #endif

@@ -66,3 +66,29 @@ equenceDiagram
     PS->>A: give_values_back()
     note right of PS: Convert indexed values back to the original integers
 ```
+
+## Radix sort
+
+With the radix sort we are stuck at 6771 moves for 500 numbers.
+
+```c
+indexer;
+max = higthest idex;
+max = count_bits;
+for (bit = 0 && bit <= max, bit++)
+	if (bit actuel == 0)
+		push_b();
+	else
+		rotate_a();
+	fin;
+	if (bit actuel + 1 dans b == 1)
+		push_a();
+	else
+		rotate_b();
+	fin;
+push_bach_to_a;
+```
+
+## Turkish sort algorithm
+
+Need to have more info about that one.
