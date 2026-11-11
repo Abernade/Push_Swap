@@ -6,11 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/11/11 11:25:43 by vldryga          ###   ########.fr       */
-=======
-/*   Updated: 2026/11/11 11:23:09 by arbernad         ###   ########.fr       */
->>>>>>> 61ff58f063bb5d9f3b4ec7d76e4454757eb1324a
+/*   Updated: 2026/11/11 11:32:58 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +85,6 @@ void	print_stacks(t_pushswap *data, int bitflags);
 void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
-
-
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);

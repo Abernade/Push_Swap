@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/11 11:30:38 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 12:00:47 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	search_min_index(t_list *a)
 int	count_moves_for_one(t_pushswap *data, t_ops *c)
 {
 	int	count;
-	int	value;
 	int	current;
 	int	max_b;
 	int	min_b;
@@ -43,34 +42,38 @@ int	count_moves_for_one(t_pushswap *data, t_ops *c)
 	count = 0;
 	max_b = search_biggest_index(data->stack_b);
 	min_b = search_min_index(data->stack_b);
-	value = data->stack_a->index;
-	while (data->stack_a)
+	while (data->stack_b)
 	{
-		current = data->stack_b->index;
-		while (data->stack_b)
+		if (data->stack_a->index > max_b)
 		{
-			if (value > max_b)
-				return (1);
-			if (value < min_b)
-				return (2);
-			else if (value < current)
-			{
-				count++;
-				data->stack_b = data->stack_b->next;
-			}
-			else
-				return (count);
+			c->psh_b++;
+			return (1);
+		}
+		else if (data->stack_a->index < min_b)
+		{
+			c->psh_b++;
+			c->rt_b++;
+			return (2);
+		}
+		current = data->stack_b->index;
+		if (data->stack_a->index < current)
+		{
+			c->rt_b++;
+			data->stack_b = data->stack_b->next;
 		}
 	}
-	return (0);
+	if (c->rt_b > 0)
+		c->revrt_b += c->rt_b;
+	count = c->rt_a + c->rt_b + c->revrt_b + 1;
+	return (count);
 }
 
 void	turk_sort(t_pushswap *data)
 {
-	int cost;
 	int	min_total;
-	int	curr_total;
-	int	i;
+	int	curr_total = 10;
+	int	index;
+	int	i = 0;
 	t_ops ops;
 
 	indexer(data->stack_a);
@@ -79,12 +82,15 @@ void	turk_sort(t_pushswap *data)
 	while (data->stack_a)
 	{
 		init_t_ops(&ops);
+		ops.rt_a += i;
 		curr_total = count_moves_for_one(data, &ops);
 		if (curr_total < min_total)
+		{
 			min_total = curr_total;
-		else
-			i++;
+			index = i;
+		}
 		data->stack_a = data->stack_a->next;
+		i++;
 	}
 
 }

@@ -92,3 +92,22 @@ push_bach_to_a;
 ## Turkish sort algorithm
 
 Need to have more info about that one.
+
+Found online :
+
+> The algorithm
+> Small cases are handled separately for maximum efficiency:
+
+    2 elements: at most one sa
+    3 elements: hardcoded decision tree, at most 2 moves
+    4–5 elements: the smallest element(s) are pushed to b, the remaining 3 are sorted with the 3-element handler, then pushed back
+
+    Large cases (6+ elements) use the Turk algorithm:
+
+    Push the first two elements to stack b — these seed the sorted structure in b.
+    For each remaining element in a, calculate its total_cust to reach its correct insertion position in b.
+    Select the node with the lowest total cost (calculate_cust).
+    Move both stacks simultaneously when both require rotation in the same direction (rr / rrr), then individually for the remainder — this is the key optimization that reduces operation count.
+    Push the selected node to b.
+    Repeat until a is empty.
+    Rotate b so its maximum element is on top, then push everything back to a with pa — stack b was kept in descending order throughout, so this produces a correctly sorted a.
