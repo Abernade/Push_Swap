@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:57:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/09 16:54:29 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 10:21:06 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_bit(int nb, int pos)
 	return (0);
 }
 
-static int	search_biggest_index(t_list *a)
+int	search_biggest_index(t_list *a) /*used in turkish */
 {
 	int	max;
 
