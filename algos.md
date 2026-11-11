@@ -111,3 +111,5 @@ Found online :
     Push the selected node to b.
     Repeat until a is empty.
     Rotate b so its maximum element is on top, then push everything back to a with pa — stack b was kept in descending order throughout, so this produces a correctly sorted a.
+
+    //maybe ne pas reverse back à chaque fois mais juste trouver le top de b puis rien qu'a la fin rotate dans le bon sens pour n'avoir qu'une seule fois du revrse rotate ?
