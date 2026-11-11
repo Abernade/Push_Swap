@@ -6,7 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2026/11/11 11:25:43 by vldryga          ###   ########.fr       */
+=======
 /*   Updated: 2026/11/11 11:23:09 by arbernad         ###   ########.fr       */
+>>>>>>> 61ff58f063bb5d9f3b4ec7d76e4454757eb1324a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +133,7 @@ t_list	*nsertion_sort(t_pushswap *data, int size);
 
 //print_bench.c
 void	print_bench(t_pushswap *data);
-
+void	init_t_ops(t_ops *ops);
 
 	/**
 	*	BUCKET SORT
@@ -157,5 +161,6 @@ void	indexer(t_list *stack);
 
 // radix.c
 void	radix(t_pushswap *data);
+int	search_biggest_index(t_list *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 15:20:16 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 11:26:52 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	count_ops(t_list *instructions, t_ops *counts)
 	}
 }
 
-static void	init_t_ops(t_ops *ops)
+void	init_t_ops(t_ops *ops)
 {
 	ops->psh_a = 0;
 	ops->psh_b = 0;
