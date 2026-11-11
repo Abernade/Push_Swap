@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/06 11:28:41 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:46:28 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,6 @@ static void	free_all(t_pushswap *data)
 	free(data);
 }
 
-/*static void	algo_adaptator(swap *flags)
-{
-	if (flags->flag_adaptative)
-		adaptative();
-	else if (flags->flag_simple)
-		simple();
-	else if(flags->flag_medium)
-		medium();
-	else if (flags->flag_complex)
-		complex();
-}*/
-
 int	main(int argc, char **av)
 {
 	t_pushswap		*data;
@@ -91,15 +79,9 @@ int	main(int argc, char **av)
 	}
 	size = ft_lstsize(data->stack_a);
 	data->config->disorder = disorder(data->stack_a, size);
-	//data->stack_a = simple_a(data, size);
-	print_instruction_list(data);
-	//print_config(data->config);
-	//printf_stacks(data);
-	bucket_sort(data);
-	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
-//	indexer(data->stack_a);
-//	bucket_init(data);
-//	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
+	print_stacks(data, PRINT_NB | PRINT_IDX);
+	radix(data);
+	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_INSTRUCTIONS);
 	print_bench(data);
 	free_all(data);
 	return (0);

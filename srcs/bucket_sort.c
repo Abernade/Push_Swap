@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/06 11:28:59 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/06 11:42:54 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	push_into_buckets(t_pushswap *data)
 		else
 			flag = TOP;
 		push_to_bucket(data, bucket, flag);
-		print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 	}
 }
 
@@ -57,7 +56,6 @@ static int	find_biggest_in_bucket(t_list *stack)
 	int	forward = 0;
 	int back = 0;
 
-	printf("\nmax size of stack = [%d]\n", max);
 	while (stack)
 	{
 		found = stack->index;
@@ -84,7 +82,6 @@ static void	sort_in_buckets(t_pushswap *data)
 		else if (pos < 0)
 			reverse_multi_rotations(data, pos);
 		push_a(data);
-		print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 	}
 }
 

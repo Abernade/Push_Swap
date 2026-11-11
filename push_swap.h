@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/06 11:29:19 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/09 14:35:26 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int		ft_abs(int n);
 int		ft_sqrt(int n);
 
 // algo_simple.c
-t_list	*simple_a(t_pushswap *data, int size);
+t_list	*nsertion_sort(t_pushswap *data, int size);
 
 //print_bench.c
 void	print_bench(t_pushswap *data);
@@ -151,5 +151,8 @@ void	push_to_bucket(t_pushswap *data, int bucket, int position);
 
 // indexer.c
 void	indexer(t_list *stack);
+
+// radix.c
+t_list	*radix(t_pushswap *data);
 
 #endif
