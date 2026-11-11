@@ -1,6 +1,7 @@
 .clangd
 
 output
+out
 args.txt
 push_swap
 

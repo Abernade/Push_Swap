@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 12:49:00 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/10 17:23:23 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 14:36:48 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,43 +31,28 @@ static int	get_target_bucket(t_list *stack, int bucket)
 	return (closest);
 }
 
-int		get_target_offset(t_list *stack_b, int bucket, int target)
-{
-	int	flag;
-	int	offset_forward;
-	int	offset_backward;
-
-	if (target == bucket || bucket == -1)
-		flag = ANY;
-	else if (target > bucket)
-		flag = BOTTOM;
-	else
-		flag = TOP;
-	offset_forward = bucket_offset_forward(stack_b, target, flag);
-	offset_backward = bucket_offset_backward(stack_b, target, flag);
-	if (ft_abs(offset_forward) <= ft_abs(offset_backward))
-		return (offset_forward);
-	else
-		return (offset_backward);
-}
-
 static t_ops	prevision(t_list *stack_b, int target, int flags, int pos)
 {
 	int		offset_f;
 	int		offset_b;
+	int		offset;
 	t_ops	ops;
 
 	ft_bzero(&ops, sizeof(t_ops));
 	offset_f = bucket_offset_forward(stack_b, target, flags);
 	offset_b = bucket_offset_backward(stack_b, target, flags);
-	if (pos > 0)
-		ops.rt_a = ft_abs(pos);
+	if (ft_abs(offset_f) < ft_abs(offset_b))
+		offset = offset_f;
 	else
-		ops.revrt_a = ft_abs(pos);
-	if (ft_abs(pos + offset_b) <= ft_abs(pos + offset_f))
-		ops.revrt_b = ft_abs(offset_b);
+		offset = offset_b;
+	if (pos >= 0)
+		ops.rt_a = pos;
 	else
-		ops.rt_b = ft_abs(offset_f);
+		ops.revrt_a = -pos;
+	if (offset >= 0)
+		ops.rt_b = offset;
+	else
+		ops.revrt_b = -offset;
 	ops.total = max(ops.rt_a, ops.rt_b) + max(ops.revrt_a, ops.revrt_b);
 	return (ops);
 }
@@ -89,7 +74,7 @@ t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos)
 	op1 = prevision(data->stack_b, target_bucket, flag, starting_pos);
 	starting_pos -= data->a_size;
 	op2 = prevision(data->stack_b, target_bucket, flag, starting_pos);
-	if (op1.total < op2.total)
+	if (op1.total <= op2.total)
 		return (op1);
 	return (op2);
 }

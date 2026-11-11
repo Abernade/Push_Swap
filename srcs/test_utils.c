@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 11:58:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/11 13:28:54 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ void	print_stacks(t_pushswap *data, int bitflags)
 		{
 			printf("\nprevision: { total: %d", stack->prevision.total);
 			if (stack->prevision.rt_a)
-				printf(" ,ra: %d", stack->prevision.rt_a);
+				printf(", ra: %d", stack->prevision.rt_a);
 			if (stack->prevision.rt_b)
-				printf(" ,rb: %d", stack->prevision.rt_b);
+				printf(", rb: %d", stack->prevision.rt_b);
 			if (stack->prevision.revrt_a)
-				printf(" ,rra: %d", stack->prevision.revrt_a);
+				printf(", rra: %d", stack->prevision.revrt_a);
 			if (stack->prevision.revrt_b)
-				printf(" ,rrb: %d", stack->prevision.revrt_b);
+				printf(", rrb: %d", stack->prevision.revrt_b);
 			if (stack->prevision.psh_a)
-				printf(" ,pa: %d", stack->prevision.psh_a);
+				printf(", pa: %d", stack->prevision.psh_a);
 			if (stack->prevision.psh_b)
-				printf(" ,pb: %d", stack->prevision.psh_b);
+				printf(", pb: %d", stack->prevision.psh_b);
 			printf(" }");
 		}
 		stack = stack->next;
@@ -95,17 +95,17 @@ void	print_stacks(t_pushswap *data, int bitflags)
 		{
 			printf("\nprevision: { total: %d", stack->prevision.total);
 			if (stack->prevision.rt_a)
-				printf(" ,ra: %d", stack->prevision.rt_a);
+				printf(", ra: %d", stack->prevision.rt_a);
 			if (stack->prevision.rt_b)
-				printf(" ,rb: %d", stack->prevision.rt_b);
+				printf(", rb: %d", stack->prevision.rt_b);
 			if (stack->prevision.revrt_a)
-				printf(" ,rra: %d", stack->prevision.revrt_a);
+				printf(", rra: %d", stack->prevision.revrt_a);
 			if (stack->prevision.revrt_b)
-				printf(" ,rrb: %d", stack->prevision.revrt_b);
+				printf(", rrb: %d", stack->prevision.revrt_b);
 			if (stack->prevision.psh_a)
-				printf(" ,pa: %d", stack->prevision.psh_a);
+				printf(", pa: %d", stack->prevision.psh_a);
 			if (stack->prevision.psh_b)
-				printf(" ,pb: %d", stack->prevision.psh_b);
+				printf(", pb: %d", stack->prevision.psh_b);
 			printf(" }");
 		}
 		stack = stack->next;
