@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/11 11:32:58 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/11 17:27:49 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ t_list	*lstnprev(t_list *node, int offset);
 int		ft_abs(int n);
 int		ft_sqrt(int n);
 int		max(int a, int b);
+int		min(int a, int b);
 
 // algo_simple.c
 t_list	*nsertion_sort(t_pushswap *data, int size);
@@ -156,5 +157,9 @@ void	indexer(t_list *stack);
 // radix.c
 void	radix(t_pushswap *data);
 int	search_biggest_index(t_list *a);
+
+//turkish_sort.c
+void	turk_sort(t_pushswap *data);
+
 
 #endif
