@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/11 17:30:34 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 08:57:26 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ typedef struct s_pushswap
 	int			a_size;
 	int			b_size;
 }	t_pushswap;
+
+typedef struct s_turk
+{
+	int	b_max;
+	int	b_min;
+	int	a_value;
+	int	current;
+} t_turk;
 
 /**
  *	/!\ TO BE DELETED /!\
@@ -154,12 +162,20 @@ t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
 // indexer.c
 void	indexer(t_list *stack);
 
+// index_utils.c
+int		search_min_index(t_list *a);
+int		search_max_index(t_list *a);
+
+
 // radix.c
 void	radix(t_pushswap *data);
-int	search_biggest_index(t_list *a);
+int		search_biggest_index(t_list *a);
 
 //turkish_sort.c
 void	turk_sort(t_pushswap *data);
+
+// turkish_utils.c
+int		search_lowest(t_pushswap *data, t_ops *op, t_turk *info);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:57:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/11 10:21:06 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 10:47:18 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ static int	find_bit(int nb, int pos)
 	if (n & (1 << (pos - 1)))
 		return (1);
 	return (0);
-}
-
-int	search_biggest_index(t_list *a) /*used in turkish */
-{
-	int	max;
-
-	max = a->index;
-	while (a)
-	{
-		if (max < a->index)
-			max = a->index;
-		a = a->next;
-	}
-	return (max);
 }
 
 static void	alternate_a(t_pushswap *data, int bit)
@@ -98,7 +84,7 @@ void	radix(t_pushswap *data)
 	bit = 0;
 	indexer(data->stack_a);
 	print_stacks(data, PRINT_NB | PRINT_IDX);
-	max = search_biggest_index(data->stack_a);
+	max = search_max_index(data->stack_a);
 	max = count_bits(max);
 	while (bit <= max)
 	{
