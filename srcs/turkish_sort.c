@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 11:28:16 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 12:32:39 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,64 @@ static void	count_ops(t_pushswap *data, t_ops *c, int max_b, int min_b)
 			c->rt_b++;
 		head = head->next;
 	}
+	if (c->rt_a > (data->a_size / 2))
+		count_reverse_a(data, c);
+	if (c->rt_b > (data->b_size / 2))
+		count_reverse_b(data, c);
 }
 
-static void	max_on_top(t_pushswap *data)
+/*static void	max_on_top(t_pushswap *data)
 {
 	int	pos;
 
 	pos = search_max_index(data->stack_b);
 	while (pos != data->stack_b->index)
 		rotate_b(data);
+		}*/
+
+static void rr(t_pushswap *data, int count)
+{
+	while (count > 0)
+	{
+		rotate_a(data);
+		rotate_b(data);
+		count--;
+	}
+}
+
+static void	rrr(t_pushswap *data, int count)
+{
+	while (count > 0)
+	{
+		reverse_rotate_a(data);
+		reverse_rotate_b(data);
+		count--;
+	}
+}
+
+static void	find_right_insert(t_pushswap *data)
+{
+	int	current;
+
+	current = data->stack_b->index;
+	printf("right insert :\ncurrent:[%d] && index:[%d]\n", current, data->stack_a->index);
+	if (data->stack_a->index < current)//here
+	{
+		while (data->stack_a->index < current)
+		{
+			rotate_b(data);
+			current = data->stack_b->index;
+		}
+	}
+	if (data->stack_a->index > current)
+	{
+		while (data->stack_a->index > current)
+		{
+			reverse_rotate_b(data);
+			current = data->stack_b->index;
+		}
+	}
+	push_b(data);
 }
 
 static void	push_lowest(t_pushswap *data, t_ops *ops, t_turk *info)
@@ -61,34 +110,24 @@ static void	push_lowest(t_pushswap *data, t_ops *ops, t_turk *info)
 	int	count;
 	int	current;
 
-	//here j'ai enlever le compte de b_max et min psq c'est calculé avant;
 	count_ops(data, ops, info->b_max, info->b_min);
 	count = min(ops->rt_a, ops->rt_b);
-	while (count > 0)
+	rr(data, count);
+	count = min(ops->revrt_a, ops->revrt_b);
+	rrr(data, count);
+	if (data->stack_a->index > info->b_max)
 	{
-		rotate_a(data);
-		rotate_b(data);
-		count--;
-	}
-	while (data->stack_b)
-	{
-		if (data->stack_a->index > info->b_max)
-		{
-			push_b(data);
-			return ;
-		}
-		else if (data->stack_a->index < info->b_min)
-		{
-			find_node(data, info->b_max);
-			return ;
-		}
-		current = data->stack_b->index;
-		if (data->stack_a->index < current)//here
-			rotate_b(data);
 		push_b(data);
-		max_on_top(data);
 		return ;
 	}
+	else if (data->stack_a->index < info->b_min)
+	{
+		find_node(data, info->b_max);
+		return ;
+	}
+	current = data->stack_b->index;
+	if (data->stack_a->index)
+		find_right_insert(data);
 }
 
 void	turk_sort(t_pushswap *data)
@@ -102,9 +141,9 @@ void	turk_sort(t_pushswap *data)
 	push_b(data);
 	while (data->stack_a)
 	{
-		init_t_ops(&op);
+		print_stacks(data, PRINT_IDX | PRINT_NB);
 		pos = search_lowest(data, &op, &info);
-		op.rt_a = pos;
+		printf("operations : rt_a = [%d]; rt_b = [%d]; revrt_a = [%d]; revrt_b = [%d]\n", op.rt_a, op.rt_b, op.revrt_a, op.revrt_b);
 		push_lowest(data, &op, &info);
 	}
 	pos = search_max_index(data->stack_b);

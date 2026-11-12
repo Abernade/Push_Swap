@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 08:57:26 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 11:37:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,9 @@ void	turk_sort(t_pushswap *data);
 
 // turkish_utils.c
 int		search_lowest(t_pushswap *data, t_ops *op, t_turk *info);
+void	count_reverse_a(t_pushswap *data, t_ops *c);
+void	count_reverse_b(t_pushswap *data, t_ops *c);
+
 
 
 #endif

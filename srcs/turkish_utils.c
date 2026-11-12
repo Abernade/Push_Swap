@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:49:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 11:28:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 12:31:33 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
  * right insertion either i dont remember */
 /*static int	find_right_insert()
 	{}*/
+
+void	count_reverse_a(t_pushswap *data, t_ops *c)
+{
+	c->revrt_a = data->a_size - c->rt_a;
+	c->rt_a = 0;
+}
+
+void	count_reverse_b(t_pushswap *data, t_ops *c)
+{
+	c->revrt_b = data->b_size - c->rt_b;
+	c->rt_b = 0;
+}
+
 static int	count_moves_for_one(t_pushswap *data, t_ops *c, t_turk *info)
 {
 	t_list *head;
@@ -44,16 +57,11 @@ static int	count_moves_for_one(t_pushswap *data, t_ops *c, t_turk *info)
 		head = head->next;//chg
 	}
 	if (c->rt_a > (data->a_size / 2))
-	{
-		c->revrt_a = data->a_size - c->rt_a;
-		c->rt_a = 0;
-	}
+		count_reverse_a(data, c);
 	if (c->rt_b > (data->b_size / 2))
-	{
-		c->revrt_b = data->b_size - c->rt_b;
-		c->rt_b = 0;
-	}
+		count_reverse_b(data, c);
 	count = c->rt_a + c->rt_b + c->revrt_a + c->revrt_b + 1;
+	// possible fonction a faire ici pour etre précis
 	return (count);
 }
 
@@ -72,8 +80,7 @@ int	search_lowest(t_pushswap *data, t_ops *op, t_turk *info)
 	head = data->stack_a;
 	while (head)
 	{
-		op->rt_a += rotations;
-		//if (rotations > (data->a_size / 2)) //need to add
+		init_t_ops(op);
 		moves = count_moves_for_one(data, op, info);
 		if (moves < min_moves)
 		{
@@ -83,5 +90,6 @@ int	search_lowest(t_pushswap *data, t_ops *op, t_turk *info)
 		head = head->next;
 		rotations++;
 	}
+	op->rt_a = pos;
 	return (pos);
 }
