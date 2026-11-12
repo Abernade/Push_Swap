@@ -6,14 +6,14 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 12:40:58 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 15:45:58 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-static void	find_node(t_pushswap *data, int pos)
+static void	insert_max_node(t_pushswap *data, int pos)
 {
 	while (data->stack_b->index != pos)
 			rotate_b(data);
@@ -51,15 +51,6 @@ static void	count_ops(t_pushswap *data, t_ops *c, int max_b, int min_b)
 		count_reverse_b(data, c);
 }
 
-/*static void	max_on_top(t_pushswap *data)
-{
-	int	pos;
-
-	pos = search_max_index(data->stack_b);
-	while (pos != data->stack_b->index)
-		rotate_b(data);
-		}*/
-
 static void rr(t_pushswap *data, int count, t_ops *c)
 {
 	while (count > 0)
@@ -87,29 +78,9 @@ static void	rrr(t_pushswap *data, int count, t_ops *c)
 static void	find_right_insert(t_pushswap *data, t_ops *c)
 {
 	int	current;
+	(void)c;
 
 	current = data->stack_b->index;
-	while (c->rt_a > 0)
-	{
-		rotate_a(data);
-		c->rt_a--;
-	}
-	while (c->rt_b > 0)
-	{
-		rotate_b(data);
-		c->rt_b--;
-	}
-	while (c->revrt_a)
-	{
-		reverse_rotate_a(data);
-		c->revrt_a--;
-	}
-	while (c->revrt_b)
-	{
-		reverse_rotate_b(data);
-		c->revrt_b--;
-	}
-/*	if (data->stack_a->index < current)//here
 	{
 		while (data->stack_a->index < current)
 		{
@@ -124,37 +95,83 @@ static void	find_right_insert(t_pushswap *data, t_ops *c)
 			reverse_rotate_b(data);
 			current = data->stack_b->index;
 		}
-		}*/
+	}
 	push_b(data);
 }
 
-static void	push_lowest(t_pushswap *data, t_ops *ops, t_turk *info)
+static void	push_lowest(t_pushswap *data, int pos, t_turk *info)
 {
-	int	count;
+	t_list	*head = data->stack_a;
+	t_ops	*curr;
+	int		moves;
 
-	count_ops(data, ops, info->b_max, info->b_min);
-	count = min(ops->rt_a, ops->rt_b);
-	rr(data, count, ops);
-	count = min(ops->revrt_a, ops->revrt_b);
-	rrr(data, count, ops);
-	if (data->stack_a->index > info->b_max)
+	while (pos > 0)
 	{
-		push_b(data);
-		return ;
+		head = head->next;
+		pos--;
 	}
-	else if (data->stack_a->index < info->b_min)
+	curr = &head->prevision;
+	moves = min(curr->rt_a, curr->rt_b);
+	rr(data, moves, curr);
+	moves = min(curr->revrt_a, curr->revrt_b);
+	rr(data, moves, curr);
+	while (curr->rt_a > 0)
 	{
-		find_node(data, info->b_max);
-		return ;
+		rotate_a(data);
+		curr->rt_a--;
 	}
-	if (data->stack_a->index)
-		find_right_insert(data, ops);
+	while (curr->rt_b > 0)
+	{
+		rotate_b(data);
+		curr->rt_b--;
+	}
+	while (curr->revrt_a > 0)
+	{
+		reverse_rotate_a(data);
+		curr->revrt_a--;
+	}
+	while (curr->revrt_b > 0)
+	{
+		reverse_rotate_b(data);
+		curr->revrt_b--;
+	}
+	push_b(data);
+}
+
+/* *
+ * cette fonction cherche l'element de a qui necessite le moins
+ * de coup pour bouger dans la struct.
+ * */
+int	search_lowest(t_pushswap *data, t_turk *info)
+{
+	int	moves;
+	int	min_moves;
+	int	pos;
+	int	rotations;
+	t_list *head;
+
+	min_moves = data->a_size + 1; //just an init
+	moves = data->a_size + 1; //just an init
+	pos = 0;
+	rotations = 0;
+	head = data->stack_a;
+	while (head)
+	{
+		moves = count_moves_for_one(data, info, rotations);
+		if (moves < min_moves)
+		{
+			min_moves = moves;
+			pos = rotations;
+		}
+		head = head->next;
+		rotations++;
+	}
+	return (pos);
 }
 
 void	turk_sort(t_pushswap *data)
 {
 	int		pos;
-	t_ops	op;
 	t_turk	info;
 
 	indexer(data->stack_a);
@@ -162,10 +179,8 @@ void	turk_sort(t_pushswap *data)
 	push_b(data);
 	while (data->stack_a)
 	{
-		print_stacks(data, PRINT_IDX | PRINT_NB);
-		pos = search_lowest(data, &op, &info);
-		printf("operations : rt_a = [%d]; rt_b = [%d]; revrt_a = [%d]; revrt_b = [%d]\n", op.rt_a, op.rt_b, op.revrt_a, op.revrt_b);
-		push_lowest(data, &op, &info);
+		pos = search_lowest(data, &info);
+		push_lowest(data, pos);//
 	}
 	pos = search_max_index(data->stack_b);
 	while (pos != data->stack_b->index)
