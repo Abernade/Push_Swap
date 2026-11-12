@@ -6,14 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 15:45:58 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/12 16:41:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-static void	insert_max_node(t_pushswap *data, int pos)
+/*static void	insert_max_node(t_pushswap *data, int pos)
 {
 	while (data->stack_b->index != pos)
 			rotate_b(data);
@@ -49,7 +48,7 @@ static void	count_ops(t_pushswap *data, t_ops *c, int max_b, int min_b)
 		count_reverse_a(data, c);
 	if (c->rt_b > (data->b_size / 2))
 		count_reverse_b(data, c);
-}
+}*/
 
 static void rr(t_pushswap *data, int count, t_ops *c)
 {
@@ -75,31 +74,7 @@ static void	rrr(t_pushswap *data, int count, t_ops *c)
 	}
 }
 
-static void	find_right_insert(t_pushswap *data, t_ops *c)
-{
-	int	current;
-	(void)c;
-
-	current = data->stack_b->index;
-	{
-		while (data->stack_a->index < current)
-		{
-			rotate_b(data);
-			current = data->stack_b->index;
-		}
-	}
-	if (data->stack_a->index > current)
-	{
-		while (data->stack_a->index > current)
-		{
-			reverse_rotate_b(data);
-			current = data->stack_b->index;
-		}
-	}
-	push_b(data);
-}
-
-static void	push_lowest(t_pushswap *data, int pos, t_turk *info)
+static void	push_lowest(t_pushswap *data, int pos)
 {
 	t_list	*head = data->stack_a;
 	t_ops	*curr;
@@ -114,21 +89,21 @@ static void	push_lowest(t_pushswap *data, int pos, t_turk *info)
 	moves = min(curr->rt_a, curr->rt_b);
 	rr(data, moves, curr);
 	moves = min(curr->revrt_a, curr->revrt_b);
-	rr(data, moves, curr);
+	rrr(data, moves, curr);
 	while (curr->rt_a > 0)
 	{
 		rotate_a(data);
 		curr->rt_a--;
 	}
-	while (curr->rt_b > 0)
-	{
-		rotate_b(data);
-		curr->rt_b--;
-	}
 	while (curr->revrt_a > 0)
 	{
 		reverse_rotate_a(data);
 		curr->revrt_a--;
+	}
+	while (curr->rt_b > 0)
+	{
+		rotate_b(data);
+		curr->rt_b--;
 	}
 	while (curr->revrt_b > 0)
 	{
@@ -179,8 +154,9 @@ void	turk_sort(t_pushswap *data)
 	push_b(data);
 	while (data->stack_a)
 	{
+		print_stacks(data, PRINT_IDX);
 		pos = search_lowest(data, &info);
-		push_lowest(data, pos);//
+		push_lowest(data, pos);
 	}
 	pos = search_max_index(data->stack_b);
 	while (pos != data->stack_b->index)
