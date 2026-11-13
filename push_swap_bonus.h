@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 11:21:03 by vldryga          ###   ########.fr       */
+/*   Created: 2026/11/13 14:02:28 by vldryga           #+#    #+#             */
+/*   Updated: 2026/11/13 14:50:11 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef	PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
+
 #include "push_swap.h"
 
-static t_bool parse_instructions()
-{}
+# define BUFFER_SIZE 42
 
-t_bool	checker(t_pushswap *data)
-{
-	t_list	*instructions;
+void	execute_instructions(t_list *instr);
 
-	parse_instructions();
-}
-
-int	main(int ac, char **av)
-{
-	if (ac < 2)
-		return (1);
-}
+#endif

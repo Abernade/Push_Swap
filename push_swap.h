@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 14:36:23 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/13 17:09:31 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
 
+//push_swap.c
+t_pushswap	*pushswap_init();
+
 // parser.c
 t_list	*parser(char **av, t_config *flags);
 double	disorder(t_list *list_a, unsigned int size);
@@ -166,6 +169,12 @@ void	indexer(t_list *stack);
 int		search_min_index(t_list *a);
 int		search_max_index(t_list *a);
 
+//init_utils.c
+t_config	*config_init();
+t_pushswap	*pushswap_init();
+
+// insertion_sort.c
+t_list	*insertion_sort(t_pushswap *data, int size);
 
 // radix.c
 void	radix(t_pushswap *data);

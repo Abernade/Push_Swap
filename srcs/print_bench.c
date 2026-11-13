@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 11:17:57 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/13 17:16:26 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	print_strategy(t_pushswap *data)
 		write(1, "strategy : Simple / O(n^2)", 26);
 	else if (data->config->flag_medium)
 		write(1, "startegy : Medium / O(n√n)", 26);
-	else if (data->config->flag_adaptative)
+	else if (data->config->flag_complex)
 		write(1, "strategy : Complex / O(n log n)", 31);
 	else
 	{
