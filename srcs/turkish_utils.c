@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:49:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 17:42:19 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/13 10:17:13 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	init_info(t_pushswap *data, t_turk *info, int rot)
 	info->current = data->stack_b->index;
 }
 
-static int search_closest_index(t_list *a, int value, t_turk *info)
+/*static int search_closest_index(t_list *a, int value, t_turk *info)
 {
 	int min = 2147483647; //maybe need some change
 	int	curr;
@@ -84,6 +84,30 @@ static int search_closest_index(t_list *a, int value, t_turk *info)
 		if (curr < min && value < a->index)
 		{
 			min = curr;
+			index = a->index;
+		}
+		a = a->next;
+	}
+	return (index);
+}*/
+
+static int search_closest_index(t_list *a, int value, t_turk *info)
+{
+	int max = 2147483647; //maybe need some change
+	int	curr;
+	int	index;
+
+	if (value < info->b_min)
+	{
+		max = search_max_index(a);
+		return (max);
+	}
+	while (a)
+	{
+		curr = ft_abs(value - a->index);
+		if (curr < max && value > a->index)
+		{
+			max = curr;
 			index = a->index;
 		}
 		a = a->next;
