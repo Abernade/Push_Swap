@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 17:28:00 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/13 11:17:57 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ static void	print_strategy(t_pushswap *data)
 static void	count_ops(t_list *instructions, t_ops *counts)
 {
 	char	*curr;
+	t_list	*head;
 
-	while (instructions)
+	head = instructions;
+	while (head)
 	{
-		curr = (char *)instructions->content;
+		curr = (char *)head->content;
 		if (ft_strcmp(curr, "sa") == 0)
 			counts->sw_a++;
 		else if (ft_strcmp(curr, "sb") == 0)
@@ -71,7 +73,7 @@ static void	count_ops(t_list *instructions, t_ops *counts)
 		else if (ft_strcmp(curr, "rr") == 0)
 		else if (ft_strcmp(curr, "rrr") == 0)*/
 		counts->total++;
-		instructions = instructions->next;
+		head = head->next;
 	}
 }
 
