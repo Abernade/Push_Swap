@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 16:41:12 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/13 09:35:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,6 @@ static void	push_lowest(t_pushswap *data, int pos)
 	push_b(data);
 }
 
-/* *
- * cette fonction cherche l'element de a qui necessite le moins
- * de coup pour bouger dans la struct.
- * */
 int	search_lowest(t_pushswap *data, t_turk *info)
 {
 	int	moves;
@@ -144,6 +140,23 @@ int	search_lowest(t_pushswap *data, t_turk *info)
 	return (pos);
 }
 
+
+static void	back_in_a(t_pushswap *data)
+{
+	int	max;
+
+	max = search_max_index(data->stack_b);
+	while (data->stack_b)
+	{
+		while (max != data->stack_b->index)
+		{
+			rotate_b(data);
+			max = search_max_index(data->stack_b);
+		}
+		push_a(data);
+	}
+}
+
 void	turk_sort(t_pushswap *data)
 {
 	int		pos;
@@ -154,13 +167,8 @@ void	turk_sort(t_pushswap *data)
 	push_b(data);
 	while (data->stack_a)
 	{
-		print_stacks(data, PRINT_IDX);
 		pos = search_lowest(data, &info);
 		push_lowest(data, pos);
 	}
-	pos = search_max_index(data->stack_b);
-	while (pos != data->stack_b->index)
-		rotate_b(data);
-	while (data->stack_b)
-		push_a(data);
+	back_in_a(data);
 }
