@@ -95,7 +95,8 @@ Need to have more info about that one.
 
 Found online :
 
-> The algorithm
+### The algorithm
+
 > Small cases are handled separately for maximum efficiency:
 
     2 elements: at most one sa
@@ -111,3 +112,25 @@ Found online :
     Push the selected node to b.
     Repeat until a is empty.
     Rotate b so its maximum element is on top, then push everything back to a with pa — stack b was kept in descending order throughout, so this produces a correctly sorted a.
+
+    //maybe ne pas reverse back à chaque fois mais juste trouver le top de b puis rien qu'a la fin rotate dans le bon sens pour n'avoir qu'une seule fois du revrse rotate ?
+
+### reprise
+
+Pour chaque élément de la stack_a, il faut calculer :
+
+- le nombre total d'opérations nécessaires pour introduire l'élément au bon endroit.
+  - il faut calculer si l'insertion est plus rapide par le haut de la stack ou le bas (rotate ou reverse_rotate);
+
+## Check programm
+
+Il faut écrire un programme `checker` : il prends en parametres la stack_a formatée comme une list d'entiers. S'il n'y a pas d'arguments, le programme s'arrete et n'affiche rien.  
+Ensuite, il faut récupérer les operations dans l'entrée standard. Chaque instruction doit être suivie par une nouvelle ligne. Il y a un parsing des arguments rentrés à faire.  
+Ensuite, il faut executer les instructions passés en paramètres.  
+Puis, vérifier si la stack_a est trié dans le bon ordre.
+
+- Il faut penser à vérifier que la stack_b est bien vide sinon c'est une erreur.
+- Si la stack_a est bien rangée après les instructions,
+  - il faut afficher "OK\n"; et,
+- sinon,
+  - afficher "Error\n" dans le **standard error**.

@@ -6,44 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 16:58:39 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/15 17:07:12 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static t_config	*config_init()
-{
-	t_config	*config;
-
-	config = (t_config *)malloc(sizeof(t_config));
-	if (!config)
-		return (NULL);
-	config->flag_adaptative = 0;
-	config->flag_bench = 0;
-	config->flag_complex = 0;
-	config->flag_medium = 0;
-	config->flag_simple = 0;
-	config->disorder = -1;
-	return (config);
-}
-
-static t_pushswap	*pushswap_init()
-{
-	t_pushswap	*data;
-
-	data = (t_pushswap *)malloc(sizeof(t_pushswap));
-	if (!data)
-		return (NULL);
-	ft_bzero(data, sizeof(t_pushswap));
-	data->config = config_init();
-	if (!data->config)
-	{
-		free(data);
-		return (NULL);
-	}
-	return (data);
-}
 
 static void	free_all(t_pushswap *data)
 {
@@ -52,6 +19,25 @@ static void	free_all(t_pushswap *data)
 	ft_lstclear(&data->stack_b, &del_list);
 	ft_lstclear(&data->instructions, &del_list);
 	free(data);
+}
+
+static void	start_sorting(t_pushswap *data, t_config *info)
+{
+	if (info->flag_adaptative)
+	{
+		if (info->disorder < 0.2)
+			data->stack_a = insertion_sort(data, data->a_size);
+		if (info->disorder <= 0.2 && info->disorder < 0.5)
+			bucket_sort(data);
+		if (info->disorder >= 0.5)
+			turk_sort(data);
+	}
+	else if (info->flag_simple)
+		data->stack_a = insertion_sort(data, data->a_size);
+	else if (info->flag_medium)
+		bucket_sort(data);
+	else if (info->flag_complex)
+		turk_sort(data);
 }
 
 int	main(int argc, char **av)
@@ -79,15 +65,11 @@ int	main(int argc, char **av)
 	data->a_size = ft_lstsize(data->stack_a);
 	data->b_size = 0;
 	data->config->disorder = disorder(data->stack_a, data->a_size);
-	bucket_sort(data);
-	// print_stacks(data, PRINT_INSTRUCTIONS);
-	if (optimize_rotations(&data->instructions))
-	{
-		printf("oopsi");
-		free_all(data);
-		return (1);
-	}
+	start_sorting(data, data->config);
+	turk_sort(data);
+	optimize_rotations(&data->instructions);
 	print_stacks(data, PRINT_INSTRUCTIONS);
+	print_bench(data);
 	free_all(data);
 	return (0);
 }

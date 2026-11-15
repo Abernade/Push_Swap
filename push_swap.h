@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 13:21:37 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/15 17:05:28 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef struct s_pushswap
 	int			b_size;
 }	t_pushswap;
 
+typedef struct s_turk
+{
+	int	b_max;
+	int	b_min;
+	int	a_value;
+	int	current;
+} t_turk;
+
 /**
  *	/!\ TO BE DELETED /!\
  * 	test_utils.c functions and bitflags
@@ -85,6 +93,9 @@ void	print_stacks(t_pushswap *data, int bitflags);
 void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
+
+//push_swap.c
+t_pushswap	*pushswap_init();
 
 // parser.c
 t_list	*parser(char **av, t_config *flags);
@@ -128,6 +139,7 @@ t_list	*lstnprev(t_list *node, int offset);
 int		ft_abs(int n);
 int		ft_sqrt(int n);
 int		max(int a, int b);
+int		min(int a, int b);
 
 // algo_simple.c
 t_list	*insertion_sort(t_pushswap *data, int size);
@@ -160,8 +172,29 @@ t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
 // indexer.c
 void	indexer(t_list *stack);
 
+// index_utils.c
+int		search_min_index(t_list *a);
+int		search_max_index(t_list *a);
+
+//init_utils.c
+t_config	*config_init();
+t_pushswap	*pushswap_init();
+
+// insertion_sort.c
+t_list	*insertion_sort(t_pushswap *data, int size);
+
 // radix.c
 void	radix(t_pushswap *data);
 int		search_biggest_index(t_list *a);
+
+//turkish_sort.c
+void	turk_sort(t_pushswap *data);
+
+// turkish_utils.c
+int	count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
+void	count_reverse_a(t_pushswap *data, t_ops *c);
+void	count_reverse_b(t_pushswap *data, t_ops *c);
+
+
 
 #endif
