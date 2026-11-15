@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/10 14:18:00 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:36:16 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct s_ops
 	int psh_b;
 	int	rt_a;
 	int	rt_b;
+	int	rt_ab;
 	int revrt_a;
 	int	revrt_b;
+	int	revrt_ab;
 	int	total;
 }	t_ops;
 

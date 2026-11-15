@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/11 17:10:34 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/13 13:21:37 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,16 @@ int		reverse_rotate_a(t_pushswap *data);
 int		reverse_rotate_b(t_pushswap *data);
 
 // op_utils.c
-int		add_instr(t_pushswap *data, int instr);
+int		add_instr(t_list **instructions, int instr);
 void	multi_rotations(t_pushswap *data, int rotations);
 void	reverse_multi_rotations(t_pushswap *data, int rotations);
+t_bool	is_rotation_str(char *str);
+
+// rotation_list_utils.c
+t_list	*create_rotation_list(t_ops *rotations);
+
+// op_optimize.c
+int		optimize_rotations(t_list **op_lst);
 
 // lst_utils.c
 t_list	*lstnnext(t_list *node, int offset);
@@ -123,9 +130,9 @@ int		ft_sqrt(int n);
 int		max(int a, int b);
 
 // algo_simple.c
-t_list	*nsertion_sort(t_pushswap *data, int size);
+t_list	*insertion_sort(t_pushswap *data, int size);
 
-//print_bench.c
+// print_bench.c
 void	print_bench(t_pushswap *data);
 void	init_t_ops(t_ops *ops);
 
@@ -155,6 +162,6 @@ void	indexer(t_list *stack);
 
 // radix.c
 void	radix(t_pushswap *data);
-int	search_biggest_index(t_list *a);
+int		search_biggest_index(t_list *a);
 
 #endif

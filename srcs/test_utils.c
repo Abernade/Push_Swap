@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 13:28:54 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/13 14:13:41 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_stacks(t_pushswap *data, int bitflags)
 	printf("\n===== STACKS =====\n\n");
 	stack = data->stack_a;
 	printf("Stack A:\n");
-	while (stack)
+	while (stack && bitflags & (PRINT_NB | PRINT_IDX | PRINT_BUCKET | PRINT_PREVISION_A))
 	{
 		if (bitflags & PRINT_NB)
 			printf("nb: %d\t", *(int *)stack->content);
@@ -83,7 +83,7 @@ void	print_stacks(t_pushswap *data, int bitflags)
 
 	stack = data->stack_b;
 	printf("Stack B:\n");
-	while (stack)
+	while (stack && bitflags & (PRINT_NB | PRINT_IDX | PRINT_BUCKET | PRINT_PREVISION_B))
 	{
 		if (bitflags & PRINT_NB)
 			printf("nb: %d\t", *(int *)stack->content);

@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 11:26:05 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/13 10:13:20 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	bucket_sort(t_pushswap *data)
 	bucket_init(data);
 	push_into_buckets(data);
 	// print_bench(data);
-	printf("=== push back to A ===");
-	print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET);
 	sort_in_buckets(data);
-	// print_bench(data);
+	// print_stacks(data, PRINT_NB | PRINT_IDX | PRINT_BUCKET | PRINT_INSTRUCTIONS);
+	print_bench(data);
 }
