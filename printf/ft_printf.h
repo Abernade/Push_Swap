@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 16:59:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/04 16:20:02 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 11:43:40 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_format
 {

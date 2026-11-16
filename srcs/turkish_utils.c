@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:49:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 10:17:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 11:51:36 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int	count_moves_for_one(t_pushswap *data, t_turk *info, int rotations)
 	t_ops	*c;
 
 	c = get_node(data, rotations);
-	init_t_ops(c);
+	ft_bzero(c, sizeof(t_ops));
 	c->rt_a = rotations;
 	init_info(data, info, rotations);
 	fill_rotations(data, c, info);

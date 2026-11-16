@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 12:49:00 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 17:34:11 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 15:48:01 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_target_bucket(t_list *stack, int bucket)
 	return (closest);
 }
 
-static t_ops	prevision(t_list *stack_b, int target, int flags, int pos)
+static t_ops	prevision_b_to_a(t_list *stack_b, int target, int flags, int pos)
 {
 	int		offset_f;
 	int		offset_b;
@@ -57,7 +57,21 @@ static t_ops	prevision(t_list *stack_b, int target, int flags, int pos)
 	return (ops);
 }
 
-t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos)
+static t_ops	prevision_a_to_b(t_pushswap *data, int idx, int starting_pos)
+{
+
+}
+
+t_ops	get_b_to_a_prevision(t_pushswap *data, int idx, int starting_pos)
+{
+	t_list	*node;
+	t_ops	op1;
+	t_ops	op2;
+
+	op1 = prevision_a_to_b(data, idx, starting_pos);
+}
+
+t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos)
 {
 	t_ops	op1;
 	t_ops	op2;
@@ -71,9 +85,9 @@ t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos)
 		flag = BOTTOM;
 	else
 		flag = TOP;
-	op1 = prevision(data->stack_b, target_bucket, flag, starting_pos);
+	op1 = prevision_b_to_a(data->stack_b, target_bucket, flag, starting_pos);
 	starting_pos -= data->a_size;
-	op2 = prevision(data->stack_b, target_bucket, flag, starting_pos);
+	op2 = prevision_b_to_a(data->stack_b, target_bucket, flag, starting_pos);
 	if (op1.total <= op2.total)
 		return (op1);
 	return (op2);

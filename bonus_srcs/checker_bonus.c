@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 16:59:54 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 11:35:14 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void parse_instructions(t_pushswap *data, char *str)
 		{
 			if (data->instructions)
 				free_all(data);
-			printf("Error\n");
+			ft_printf("Error\n");
 			return ;
 		}
 		i++;
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 			instr = ft_strjoin(instr, buffer);
 		}
 	}
-	printf("instr [%s]", instr);
+	ft_printf("instr [%s]", instr);
 	parse_instructions(data, instr);
 	if (!data->instructions)
 	{

@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/13 14:13:41 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 11:46:18 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 
 void	print_config(t_config *config)
 {
-	printf("flag_simple:\t%d\n", config->flag_simple);
-	printf("flag_medium:\t%d\n", config->flag_medium);
-	printf("flag_complex:\t%d\n", config->flag_complex);
-	printf("flag_adaptative:\t%d\n", config->flag_adaptative);
-	printf("flag_bench:\t%d\n", config->flag_bench);
-	printf("disorder:\t%f\n\n", config->disorder);
+	ft_printf("flag_simple:\t%d\n", config->flag_simple);
+	ft_printf("flag_medium:\t%d\n", config->flag_medium);
+	ft_printf("flag_complex:\t%d\n", config->flag_complex);
+	ft_printf("flag_adaptative:\t%d\n", config->flag_adaptative);
+	ft_printf("flag_bench:\t%d\n", config->flag_bench);
+	ft_printf("disorder:\t%f\n\n", config->disorder);
 }
 
 void	print_instruction_list(t_pushswap *data)
 {
 	t_list	*instr;
 
-	printf("\n===== INSTRUCTIONS =====\n\n");
+	ft_printf("\n===== INSTRUCTIONS =====\n\n");
 	instr = data->instructions;
 	while (instr)
 	{
-		printf("%s\n", (char *)instr->content);
+		ft_printf("%s\n", (char *)instr->content);
 		instr = instr->next;
 	}
 }

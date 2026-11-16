@@ -6,18 +6,23 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/15 17:04:36 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/16 11:49:08 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := push_swap
 NAME_BONUS := checker
+
 OBJ_DIR := obj
 BONUS_OBJ_DIR := bonus_obj
 SRC_DIR := srcs
 BONUS_SRC_DIR := bonus_srcs
+
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
+
+PRINTF_PATH := printf
+PRINTF := $(PRINTF_PATH)/libftprintf.a
 
 # PENSER A ENLEVER test_utils.c
 SRC := push_swap.c \
@@ -78,14 +83,17 @@ $(BONUS_OBJ_DIR)/%.o: %.c
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
+	make -C $(PRINTF_PATH)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(NAME_BONUS) : $(BONUS_OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) -o $(NAME_BONUS)
+	make -C $(PRINTF_PATH)
+	$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) $(PRINTF) -o $(NAME_BONUS)
 
 clean:
 	make clean -C $(LIBFT_PATH)
+	make clean -C $(PRINTF_PATH)
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_DIR)
 	rm -rf $(BONUS_OBJ)
@@ -93,6 +101,7 @@ clean:
 
 fclean: clean
 	make fclean -C $(LIBFT_PATH)
+	make fclean -C $(PRINTF_PATH)
 	rm -rf $(NAME)
 	rm -rf $(NAME_BONUS)
 

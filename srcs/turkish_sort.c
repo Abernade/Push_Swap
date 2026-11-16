@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 10:00:59 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 13:26:34 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	turk_sort(t_pushswap *data)
 	int		pos;
 	t_turk	info;
 
-	indexer(data->stack_a);
+	indexer(data);
 	push_b(data);
 	push_b(data);
 	while (data->stack_a)

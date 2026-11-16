@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 10:19:03 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 14:53:00 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h> //à enlever !!!
 # include "libft/libft.h"
+# include "printf/ft_printf.h"
 
 /**
  *  Bucket sort related macros
@@ -143,7 +144,6 @@ int		min(int a, int b);
 
 // print_bench.c
 void	print_bench(t_pushswap *data);
-void	init_t_ops(t_ops *ops);
 
 	/**
 	*	BUCKET SORT
@@ -164,10 +164,11 @@ int		bucket_offset_forward(t_list *stack, int bucket, int position);
 int		bucket_offset_backward(t_list *stack, int bucket, int position);
 
 // bucket_sort_prevision.c
-t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
+t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos);
 
 // indexer.c
-void	indexer(t_list *stack);
+void	indexer(t_pushswap *data);
+void	smallest_on_top(t_pushswap *data);
 
 // index_utils.c
 int		search_min_index(t_list *a);

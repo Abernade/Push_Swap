@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 16:14:24 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 17:13:09 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 14:52:49 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,10 @@ void	push_into_buckets(t_pushswap *data)
 		node = data->stack_a;
 		while (node)
 		{
-			node->prevision = get_prevision(data, node->bucket, i);
+			node->prevision = get_a_to_b_prevision(data, node->bucket, i);
 			node = node->next;
 			i++;
 		}
-		// print_stacks(data, PRINT_IDX | PRINT_BUCKET | PRINT_PREVISION_A);
 		push_fastest(data);
 	}
 }
