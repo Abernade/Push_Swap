@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/13 10:13:20 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 10:45:49 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	sort_in_buckets(t_pushswap *data)
 	{
 		pos = find_biggest_in_bucket(data->stack_b);
 		if (pos > 0)
-			multi_rotations(data, pos);
+			multi_rotations(data, pos, 'b');
 		else if (pos < 0)
-			reverse_multi_rotations(data, pos);
+			reverse_multi_rotations(data, pos, 'b');
 		push_a(data);
 	}
 }

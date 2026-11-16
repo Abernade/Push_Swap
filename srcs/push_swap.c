@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 17:07:12 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 11:24:16 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 	if (info->flag_adaptative)
 	{
 		if (info->disorder < 0.2)
-			data->stack_a = insertion_sort(data, data->a_size);
+			insertion_sort(data, data->a_size);
 		if (info->disorder <= 0.2 && info->disorder < 0.5)
 			bucket_sort(data);
 		if (info->disorder >= 0.5)
 			turk_sort(data);
 	}
 	else if (info->flag_simple)
-		data->stack_a = insertion_sort(data, data->a_size);
+		insertion_sort(data, data->a_size);
 	else if (info->flag_medium)
 		bucket_sort(data);
 	else if (info->flag_complex)
@@ -66,9 +66,8 @@ int	main(int argc, char **av)
 	data->b_size = 0;
 	data->config->disorder = disorder(data->stack_a, data->a_size);
 	start_sorting(data, data->config);
-	turk_sort(data);
 	optimize_rotations(&data->instructions);
-	print_stacks(data, PRINT_INSTRUCTIONS);
+	print_stacks(data, PRINT_NB | PRINT_INSTRUCTIONS);
 	print_bench(data);
 	free_all(data);
 	return (0);

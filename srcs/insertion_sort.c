@@ -6,73 +6,80 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 17:05:15 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 10:39:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_back_a(t_pushswap *data, int sorted)
+int	search_min_value(t_list *a, int sorted)
 {
-	int	i;
+	t_list	*end = ft_lstlast(a);
+	int		min;
 
-	i = 0;
-	while (i <= sorted)
+	min = end->index;
+	while (sorted > 0)
 	{
-		reverse_rotate_b(data);
-		push_a(data);
+		if (min < end->index)
+			min = end->index;
+		end = end->prev;
 		sorted--;
 	}
+	return (min);
 }
 
-static void	searching_on_going(t_pushswap *data, int a, int b, int b_max)
+static void	search_right_insert(int sorted, t_pushswap *data)
 {
 	int	count;
+	int value_a;
+	int value_b;
+	int sorted_min;
 
 	count = 0;
-	if (a > b_max)
+	while (sorted > count)
 	{
-		push_b(data);
-		b_max = *(int *)data->stack_b->content;
-		rotate_b(data);
-	}
-	else
-	{
-		while (b < a)
+		value_a = *(int *)data->stack_a->content;
+		value_b = *(int *)data->stack_b->content;
+		sorted_min = search_min_value(data->stack_a, sorted);
+		if (sorted_min > value_b)
 		{
-			rotate_b(data);
-			count++;
-			b = *(int *)data->stack_b->content;
+			reverse_multi_rotations(data, sorted, 'a');
+			push_a(data);
+			multi_rotations(data, sorted + 1, 'a');
+			return ;
 		}
-		push_b(data);
-		while (count > 0)
+		else if (value_a < value_b)
 		{
-			reverse_rotate_b(data);
-			count--;
+			push_a(data);
+			multi_rotations(data, count, 'a');
+			return ;
 		}
+		reverse_rotate_a(data);
+		count++;
 	}
 }
 
-t_list	*insertion_sort(t_pushswap *data, int size)
+void	insertion_sort(t_pushswap *data, int size)
 {
 	int	sorted;
-	int	a;
-	int	b;
-	int	b_max;
+	int	value_a;
+	int	value_a1;
 
+	value_a = *(int *)data->stack_a->content;
+	value_a1 = *(int *)data->stack_a->next->content;
 	sorted = 0;
-	push_b(data);
-	b_max = *(int *)data->stack_b->content;
-	while (sorted < size - 1 && data->stack_a)
+	if (value_a > value_a1)
 	{
-		b = *(int *)data->stack_b->content;
-		a = *(int *)data->stack_a->content;
-		if (a < b)
-			push_b(data);
-		else
-			searching_on_going(data, a, b, b_max);
+		swap_a(data);
+		multi_rotations(data, 2, 'a');
+	}
+	else
+		multi_rotations(data, 2, 'a');
+	sorted = 2;
+	while (sorted < size && data->stack_b)
+	{
+		push_b(data);
+		search_right_insert(sorted, data);
 		sorted++;
 	}
-	push_back_a(data, sorted);
-	return (data->stack_a);
 }

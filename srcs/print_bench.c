@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 17:12:02 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 11:22:56 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	print_strategy(t_pushswap *data)
 	else
 	{
 		write(1, " strategy : Adaptative ", 24);
-		if (data->config->flag_simple)
+		if (data->config->disorder < 0.2)
 			write(1, "O(n^2)", 7);
-		else if (data->config->flag_medium)
+		else if (data->config->disorder <= 0.2 && data->config->disorder < 0.5)
 			write(1, "O(n√n)", 7);
-		else if (data->config->flag_adaptative)
+		else if (data->config->disorder >= 0.5)
 			write(1, "O(n log n)", 10);
 	}
 	write(1, "\n", 1);
@@ -69,7 +69,6 @@ static void	count_ops(t_list *instructions, t_ops *counts)
 			counts->revrt_a++;
 		else if (ft_strcmp(curr, "rrb") == 0)
 			counts->revrt_b++;
-		// else if (ft_strcmp(curr, "ss") == 0)
 		else if (ft_strcmp(curr, "rr") == 0)
 			counts->rt_ab++;
 		else if (ft_strcmp(curr, "rrr") == 0)
@@ -101,7 +100,7 @@ void	print_bench(t_pushswap *data)
 	init_t_ops(&ops);
 	count_ops(data->instructions, &ops);
 	printf("[bench] total_ops: %d\n", ops.total);
-	printf("[bench] sa: %d sb: %d ss: %%", ops.sw_a, ops.sw_b);
+	printf("[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
 	printf(" pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
 	printf("[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
 	printf(" rra: %d rrb: %d rrr: %d\n", ops.revrt_a, ops.revrt_b, ops.revrt_ab);

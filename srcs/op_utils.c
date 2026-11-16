@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:51:57 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/13 17:13:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 10:18:53 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,26 @@ int	add_instr(t_list **instructions, int instr)
 	return (0);
 }
 
-void multi_rotations(t_pushswap *data, int rotations)
+void multi_rotations(t_pushswap *data, int rotations, char stack)
 {
 	while (rotations > 0)
 	{
-		rotate_b(data);
+		if (stack == 'a')
+			rotate_a(data);
+		if (stack == 'b')
+			rotate_b(data);
 		rotations--;
 	}
 }
 
-void reverse_multi_rotations(t_pushswap *data, int rotations)
+void reverse_multi_rotations(t_pushswap *data, int rotations, char stack)
 {
 	while (rotations < 0)
 	{
-		reverse_rotate_b(data);
+		if (stack == 'b')
+			reverse_rotate_b(data);
+		if (stack == 'a')
+			reverse_rotate_a(data);
 		rotations++;
 	}
 }
