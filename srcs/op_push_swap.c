@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 10:26:38 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 17:07:37 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/15 16:58:10 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	push_a(t_pushswap *data)
 	data->stack_b = next_b;
 	if (next_b)
 		next_b->prev = NULL;
-	if(add_instr(data, PA))
+	if(add_instr(&data->instructions, PA))
 		return (1);
 	data->a_size++;
 	data->b_size--;
@@ -61,7 +61,7 @@ int	push_b(t_pushswap *data)
 	data->stack_a = next_a;
 	if (next_a)
 		next_a->prev = NULL;
-	if(add_instr(data, PB))
+	if(add_instr(&data->instructions, PB))
 		return (1);
 	data->a_size--;
 	data->b_size++;
@@ -80,7 +80,7 @@ int	swap_a(t_pushswap *data)
 	second_node->next = data->stack_a;
 	data->stack_a = second_node;
 	second_node->prev = NULL;
-	if (add_instr(data, SA))
+	if (add_instr(&data->instructions, SA))
 		return (1);
 	return (0);
 }
@@ -97,7 +97,7 @@ int	swap_b(t_pushswap *data)
 	second_node->next = data->stack_b;
 	data->stack_b = second_node;
 	second_node->prev = NULL;
-	if (add_instr(data, SB))
+	if (add_instr(&data->instructions, SB))
 		return (1);
 	return (0);
 }

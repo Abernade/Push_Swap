@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/13 17:09:44 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/15 17:04:36 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRC := push_swap.c \
 		op_push_swap.c \
 		op_rotate.c \
 		op_utils.c \
+		op_optimize.c \
+		rotation_list_utils.c \
 		indexer.c \
 		index_utils.c \
 		init_utils.c \
@@ -43,6 +45,7 @@ SRC := push_swap.c \
 		radix.c \
 		turkish_sort.c \
 		turkish_utils.c
+
 BONUS_SRC := checker_bonus.c \
 				init_utils.c \
 				parser.c \

@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:31:19 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/03 09:57:37 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/13 11:22:13 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	rotate_a(t_pushswap *data)
 		return (0);
 	data->stack_a = node->next;
 	ft_lstadd_back(&data->stack_a, node);
-	if(add_instr(data, RA))
+	if(add_instr(&data->instructions, RA))
 		return (1);
 	return (0);
 }
@@ -36,7 +36,7 @@ int	rotate_b(t_pushswap *data)
 		return (0);
 	data->stack_b = node->next;
 	ft_lstadd_back(&data->stack_b, node);
-	if(add_instr(data, RB))
+	if(add_instr(&data->instructions, RB))
 		return (1);
 	return (0);
 }
@@ -50,7 +50,7 @@ int	reverse_rotate_a(t_pushswap *data)
 		return (0);
 	node->prev->next = NULL;
 	ft_lstadd_front(&data->stack_a, node);
-	if(add_instr(data, RRA))
+	if(add_instr(&data->instructions, RRA))
 		return (1);
 	return (0);
 }
@@ -64,7 +64,7 @@ int	reverse_rotate_b(t_pushswap *data)
 		return (0);
 	node->prev->next = NULL;
 	ft_lstadd_front(&data->stack_b, node);
-	if (add_instr(data, RRB))
+	if (add_instr(&data->instructions, RRB))
 		return (1);
 	return (0);
 }
